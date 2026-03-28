@@ -1,0 +1,15 @@
+[
+  {
+    "Name": "NGestion I",
+    "Projects": [
+      {
+        "Path": "GestionIncidencias.Api\\GestionIncidencias.Api.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "GestionIncidencias.Web\\GestionIncidencias.Web.csproj",
+        "Action": "Start"
+      }
+    ]
+  }
+]

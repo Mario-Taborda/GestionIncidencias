@@ -1,0 +1,185 @@
+﻿@page "/Dashboard"
+@using global::GestionIncidencias.Domain.DTO.Responses
+@using MudBlazor
+@inject HttpClient http
+@inject NavigationManager NavigationManager
+@inject ISnackbar snackbar
+@inject IJSRuntime JS
+
+<MudContainer Fluid="true" Class="mt-4 px-8" Style="padding-bottom: 100px;">
+
+    <MudPaper Elevation="0" Class="pa-4 mb-6" Style="background-color: #343a40; border-radius: 8px;">
+        <MudText Typo="Typo.h4" Align="Align.Center" Style="color: white; font-weight: bold; text-transform: uppercase;">
+            <MudIcon Icon="@Icons.Material.Filled.Dashboard" Size="Size.Large" Class="mr-2 mb-n1" />
+            Centro de Control TI
+        </MudText>
+    </MudPaper>
+
+    <MudGrid Class="mb-6">
+        <MudItem xs="12" sm="4">
+            <MudPaper Elevation="2" Class="pa-4 d-flex align-center" Style="border-left: 5px solid #0056ff;">
+                <MudIcon Icon="@Icons.Material.Filled.ConfirmationNumber" Color="Color.Info" Style="font-size: 3rem;" Class="mr-4" />
+                <div>
+                    <MudText Typo="Typo.subtitle1" Style="color: gray; font-weight: bold;">TOTAL INCIDENCIAS</MudText>
+                    <MudText Typo="Typo.h4" Style="font-weight: bold;">@listaIncidencias.Count()</MudText>
+                </div>
+            </MudPaper>
+        </MudItem>
+        <MudItem xs="12" sm="4">
+            <MudPaper Elevation="2" Class="pa-4 d-flex align-center" Style="border-left: 5px solid #dc3545;">
+                <MudIcon Icon="@Icons.Material.Filled.Warning" Color="Color.Error" Style="font-size: 3rem;" Class="mr-4" />
+                <div>
+                    <MudText Typo="Typo.subtitle1" Style="color: gray; font-weight: bold;">PENDIENTES / ASIGNADAS</MudText>
+                    <MudText Typo="Typo.h4" Style="font-weight: bold;">@listaIncidencias.Count(i => i.Estado != "Finalizado" && i.Estado != "Cancelado")</MudText>
+                </div>
+            </MudPaper>
+        </MudItem>
+        <MudItem xs="12" sm="4">
+            <MudPaper Elevation="2" Class="pa-4 d-flex align-center" Style="border-left: 5px solid #28a745;">
+                <MudIcon Icon="@Icons.Material.Filled.CheckCircle" Color="Color.Success" Style="font-size: 3rem;" Class="mr-4" />
+                <div>
+                    <MudText Typo="Typo.subtitle1" Style="color: gray; font-weight: bold;">RESUELTAS</MudText>
+                    <MudText Typo="Typo.h4" Style="font-weight: bold;">@listaIncidencias.Count(i => i.Estado == "Finalizado")</MudText>
+                </div>
+            </MudPaper>
+        </MudItem>
+    </MudGrid>
+
+    <MudTable Items="@listaIncidencias" Dense="true" Hover="true" Striped="true" Filter="new Func<IncidenciaResponsesDto, bool>(FiltrarTabla)" Loading="@isLoading" LoadingProgressColor="Color.Info" Elevation="2">
+
+        <ToolBarContent>
+            <MudText Typo="Typo.h6" Style="font-weight: bold;">Historial de Reportes</MudText>
+            <MudSpacer />
+
+            <MudTextField @bind-Value="textoBusqueda" Placeholder="Buscar por nombre, estado, área..." Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.Search" IconSize="Size.Medium" Class="mt-0" Style="width: 300px;"></MudTextField>
+
+            <MudButton Variant="Variant.Outlined" Color="Color.Success" Class="ml-4" StartIcon="@Icons.Custom.FileFormats.FileExcel" OnClick="DescargarExcel">Exportar</MudButton>
+
+        </ToolBarContent>
+
+        <HeaderContent>
+            <MudTh><MudTableSortLabel SortBy="@(new Func<IncidenciaResponsesDto, object>(x => x.Id))">N° Ticket</MudTableSortLabel></MudTh>
+            <MudTh><MudTableSortLabel SortBy="@(new Func<IncidenciaResponsesDto, object>(x => x.FechaIncidencia))">Fecha Reporte</MudTableSortLabel></MudTh>
+            <MudTh>Usuario Solicitante</MudTh>
+            <MudTh>Tipo Reportado</MudTh>
+            <MudTh>Prioridad</MudTh>
+            <MudTh>Estado</MudTh>
+            <MudTh Style="text-align:center;">Acciones</MudTh>
+        </HeaderContent>
+
+        <RowTemplate>
+            <MudTd DataLabel="N° Ticket"><strong>#@context.Id.ToString("D5")</strong></MudTd>
+            <MudTd DataLabel="Fecha Reporte">@Convert.ToDateTime(context.FechaIncidencia).ToString("dd/MMM/yyyy HH:mm")</MudTd>
+            <MudTd DataLabel="Usuario">@context.NombreUsuario</MudTd>
+            <MudTd DataLabel="Tipo">@context.TipoIncidencia</MudTd>
+
+            <MudTd DataLabel="Prioridad">
+                @if (context.Prioridad.ToString() == "Alta")
+                {
+                    <MudChip T="string" Size="Size.Small" Color="Color.Error">ALTA</MudChip>
+                }
+                else if (context.Prioridad.ToString() == "Media")
+                {
+                    <MudChip T="string" Size="Size.Small" Color="Color.Info">MEDIA</MudChip>
+                }
+                else
+                {
+                    <MudChip T="string" Size="Size.Small" Color="Color.Success">BAJA</MudChip>
+                }
+            </MudTd>
+
+            <MudTd DataLabel="Estado">
+                @if (context.Estado == "Finalizado")
+                {
+                    <MudChip T="string" Size="Size.Small" Variant="Variant.Outlined" Color="Color.Success">@context.Estado</MudChip>
+                }
+                else if (context.Estado == "Abierto" || context.Estado == "No Asignado")
+                {
+                    <MudChip T="string" Size="Size.Small" Variant="Variant.Outlined" Color="Color.Error">@context.Estado</MudChip>
+                }
+                else
+                {
+                    <MudChip T="string" Size="Size.Small" Variant="Variant.Outlined" Color="Color.Warning">@context.Estado</MudChip>
+                }
+            </MudTd>
+
+            <MudTd DataLabel="Acciones" Style="text-align:center;">
+                <MudTooltip Text="Ver Detalles / Gestionar">
+                    <MudIconButton Icon="@Icons.Material.Filled.Visibility" Color="Color.Primary" Size="Size.Small" OnClick="@(async () => await IrASeguimiento(context.Id))" />
+                </MudTooltip>
+            </MudTd>
+        </RowTemplate>
+
+        <PagerContent>
+            <MudTablePager PageSizeOptions="new int[] { 10, 25, 50, 100 }" RowsPerPageString="Filas por página:" InfoFormat="{first_item}-{last_item} de {all_items}" />
+        </PagerContent>
+    </MudTable>
+
+</MudContainer>
+
+@code {
+    private bool isLoading = true;
+    private string textoBusqueda = "";
+    private IEnumerable<IncidenciaResponsesDto> listaIncidencias = new List<IncidenciaResponsesDto>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        await CargarDatos();
+    }
+
+    private async Task CargarDatos()
+    {
+        isLoading = true;
+        try
+        {
+            var resultado = await http.GetFromJsonAsync<List<IncidenciaResponsesDto>>("api/incidencia");
+            if (resultado != null)
+            {
+                listaIncidencias = resultado.OrderByDescending(i => i.Id).ToList();
+            }
+        }
+        catch (Exception ex)
+        {
+            snackbar.Add($"Error al cargar los datos: {ex.Message}", Severity.Error);
+        }
+        finally
+        {
+            isLoading = false;
+        }
+    }
+
+    private bool FiltrarTabla(IncidenciaResponsesDto elemento)
+    {
+        if (string.IsNullOrWhiteSpace(textoBusqueda))
+            return true;
+
+        if (elemento.NombreUsuario?.Contains(textoBusqueda, StringComparison.OrdinalIgnoreCase) == true) return true;
+        if (elemento.TipoIncidencia?.Contains(textoBusqueda, StringComparison.OrdinalIgnoreCase) == true) return true;
+        if (elemento.Estado?.Contains(textoBusqueda, StringComparison.OrdinalIgnoreCase) == true) return true;
+        if (elemento.Id.ToString().Contains(textoBusqueda)) return true;
+
+        return false;
+    }
+
+    private async Task IrASeguimiento(int idTicket)
+    {
+        await Task.Delay(100);
+        NavigationManager.NavigateTo($"/Seguimiento/{idTicket}");
+    }
+
+    private async Task DescargarExcel()
+    {
+        try
+        {
+            // 1. Armamos la ruta absoluta de tu API (Ej: https://localhost:7133/api/incidencia/exportar)
+            // Aseguramos que la barra inicial sea la correcta para evitar errores de ruta
+            string urlApi = "api/incidencia/exportar";
+            string rutaCompleta = new Uri(new Uri(http.BaseAddress.ToString()), urlApi).ToString();
+            await JS.InvokeVoidAsync("window.open", rutaCompleta, "_blank");
+        }
+        catch (Exception ex)
+        {
+            snackbar.Add($"Error al intentar descargar: {ex.Message}", Severity.Error);
+        }
+    }
+}

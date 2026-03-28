@@ -1,0 +1,11 @@
+C:\Users\prtecnologia01\source\repos\GestionIncidencias\GestionIncidencias.Application\bin\Debug\net10.0\GestionIncidencias.Application.deps.json
+C:\Users\prtecnologia01\source\repos\GestionIncidencias\GestionIncidencias.Application\bin\Debug\net10.0\GestionIncidencias.Application.dll
+C:\Users\prtecnologia01\source\repos\GestionIncidencias\GestionIncidencias.Application\bin\Debug\net10.0\GestionIncidencias.Application.pdb
+C:\Users\prtecnologia01\source\repos\GestionIncidencias\GestionIncidencias.Application\obj\Debug\net10.0\GestionIncidencias.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\prtecnologia01\source\repos\GestionIncidencias\GestionIncidencias.Application\obj\Debug\net10.0\GestionIncidencias.Application.AssemblyInfoInputs.cache
+C:\Users\prtecnologia01\source\repos\GestionIncidencias\GestionIncidencias.Application\obj\Debug\net10.0\GestionIncidencias.Application.AssemblyInfo.cs
+C:\Users\prtecnologia01\source\repos\GestionIncidencias\GestionIncidencias.Application\obj\Debug\net10.0\GestionIncidencias.Application.csproj.CoreCompileInputs.cache
+C:\Users\prtecnologia01\source\repos\GestionIncidencias\GestionIncidencias.Application\obj\Debug\net10.0\GestionIncidencias.Application.dll
+C:\Users\prtecnologia01\source\repos\GestionIncidencias\GestionIncidencias.Application\obj\Debug\net10.0\refint\GestionIncidencias.Application.dll
+C:\Users\prtecnologia01\source\repos\GestionIncidencias\GestionIncidencias.Application\obj\Debug\net10.0\GestionIncidencias.Application.pdb
+C:\Users\prtecnologia01\source\repos\GestionIncidencias\GestionIncidencias.Application\obj\Debug\net10.0\ref\GestionIncidencias.Application.dll

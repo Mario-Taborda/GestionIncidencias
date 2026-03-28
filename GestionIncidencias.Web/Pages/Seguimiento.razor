@@ -1,0 +1,334 @@
+﻿@page "/Seguimiento"
+@page "/Seguimiento/{IdIncidenciaCargar:int}"
+@using global::GestionIncidencias.Domain.DTO.Requests
+@using global::GestionIncidencias.Domain.DTO.Responses
+@using MudBlazor
+@inject ISnackbar snackbar
+@inject HttpClient http
+
+<MudContainer Fluid="true" Class="mt-4 px-10" Style="padding-bottom: 200px;">
+
+    <MudPaper Elevation="0" Class="pa-4 mb-6" Style="background-color: #0056ff; border-radius: 8px; border: 2px solid #CCC;">
+        <MudText Typo="Typo.h4" Align="Align.Center" Style="color: white; font-weight: bold; text-transform: uppercase;">Módulo de Técnicos - Resolución</MudText>
+    </MudPaper>
+
+    <MudPaper Elevation="2" Class="pa-4 mb-6 d-flex align-center gap-4" Style="background-color: #f8f9fa;">
+        <MudIcon Icon="@Icons.Material.Filled.ScreenSearchDesktop" Size="Size.Large" Color="Color.Primary" />
+        <MudText Typo="Typo.h6" Style="font-weight: bold;">Buscar Ticket:</MudText>
+        
+        <MudAutocomplete T="IncidenciaResponsesDto"
+                         @bind-Value="IncidenciaSeleccionada"
+                         SearchFunc="@BuscarTicketsGlobal"
+                         ToStringFunc="@(e => e==null ? null : $"Ticket #{e.Id} | Estado: {e.Estado} | Reporta: {e.NombreUsuario} | Fecha: {Convert.ToDateTime(e.FechaIncidencia).ToString("dd/MMM/yyyy")}")"
+                         Placeholder="Ej: 14, Abierto, Juan, 20/mar..."
+                         Variant="Variant.Outlined" 
+                         Margin="Margin.Dense"
+                         Style="width: 500px; background-color: white;"
+                         Clearable="true"
+                         ResetValueOnEmptyText="true" />
+
+        <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="BuscarDesdeAutocomplete" Disabled="@(IncidenciaSeleccionada == null || isSearching)">
+            @if (isSearching)
+            {
+                <MudProgressCircular Class="ms-n1" Size="Size.Small" Indeterminate="true" />
+            }
+            else
+            {
+                <MudIcon Icon="@Icons.Material.Filled.Download" Class="mr-2" /> <text>Cargar Datos</text>
+            }
+        </MudButton>
+    </MudPaper>
+
+    @if (incidenciaCargada != null)
+    {
+        <MudGrid Spacing="3">
+            
+            <MudItem xs="12" md="6">
+                <MudPaper Elevation="2" Class="pa-4" Style="height: 100%; border-top: 4px solid #dc3545;">
+                    <MudText Typo="Typo.h6" Class="mb-4" Style="font-weight: bold; color: #dc3545;">Reporte Original del Usuario</MudText>
+                    
+                    <MudTextField Value="@(incidenciaCargada.FechaIncidencia != default ? Convert.ToDateTime(incidenciaCargada.FechaIncidencia).ToString("dd/MM/yyyy HH:mm") : "")" Label="Fecha del Reporte" 
+                     Variant="Variant.Filled" ReadOnly="true" Margin="Margin.Dense" Class="mb-3" />
+                    
+                    <MudTextField Value="@incidenciaCargada.Prioridad.ToString()" Label="Prioridad Solicitada" Variant="Variant.Filled" ReadOnly="true" Margin="Margin.Dense" Class="mb-3" />
+                    
+                    <MudTextField Value="@incidenciaCargada.TipoIncidencia" Label="Tipo de Incidencia (Reportado)" Variant="Variant.Filled" ReadOnly="true" Margin="Margin.Dense" Class="mb-3" Style="color: #FF8c00; font-weight: bold;" />
+
+                    <MudTextField Value="@incidenciaCargada.NombreUsuario" Label="Usuario Solicitante" Variant="Variant.Filled" ReadOnly="true" Margin="Margin.Dense" Class="mb-3" Style="color: #0056ff; font-weight: bold;" />
+                    
+                    <MudTextField Value="@incidenciaCargada.Requerimiento" Label="Requerimiento" Variant="Variant.Filled" ReadOnly="true" Margin="Margin.Dense" Lines="2" Class="mb-3" />
+                    
+                    <MudTextField Value="@incidenciaCargada.DescripcionProblema" Label="Descripción del Problema" Variant="Variant.Filled" ReadOnly="true" Margin="Margin.Dense" Lines="5" />
+                    
+                    @if (!string.IsNullOrEmpty(incidenciaCargada.ImagenBase64))
+                    {
+                        <MudText Typo="Typo.caption" Class="mt-3 d-block" Style="font-weight:bold;">Imagen adjunta:</MudText>
+                        <div style="width:100%; display:flex; justify-content:center; background-color:#eaeaea; padding:10px; border-radius:4px;">
+                            <img src="data:image/png;base64,@incidenciaCargada.ImagenBase64" style="max-height: 200px; max-width: 100%; object-fit: contain; border: 1px solid #ccc;" />
+                        </div>
+                    }
+                </MudPaper>
+            </MudItem>
+
+            <MudItem xs="12" md="6">
+                <MudPaper Elevation="2" Class="pa-4" Style="height: 100%; border-top: 4px solid #28a745;">
+                    <MudText Typo="Typo.h6" Class="mb-4" Style="font-weight: bold; color: #28a745;">Panel de Resolución (Uso Exclusivo TI)</MudText>
+
+                    <MudSelect T="int?" @bind-Value="IdTipoIncidenciaReal" Label="Tipo de Incidencia Real" Variant="Variant.Outlined" Margin="Margin.Dense" Class="mb-4" AnchorOrigin="Origin.BottomCenter">
+                        <MudSelectItem T="int?" Value="@((int?)null)" Style="color:gray;"><em>Seleccione una opción</em></MudSelectItem>
+                        <MudSelectItem T="int?" Value="1">Hardware</MudSelectItem>
+                        <MudSelectItem T="int?" Value="2">Software</MudSelectItem>
+                        <MudSelectItem T="int?" Value="3">Red</MudSelectItem>
+                        <MudSelectItem T="int?" Value="4">Servidor</MudSelectItem>
+                    </MudSelect>
+
+                    <MudSelect T="int?" @bind-Value="IdCategoriaSolucion" Label="Categoría de Solución" Variant="Variant.Outlined" Margin="Margin.Dense" Class="mb-4" AnchorOrigin="Origin.BottomCenter">
+                        <MudSelectItem T="int?" Value="@((int?)null)" Style="color:gray;"><em>Seleccione una opción</em></MudSelectItem>
+                        <MudSelectItem T="int?" Value="1">Soporte Remoto</MudSelectItem>
+                        <MudSelectItem T="int?" Value="2">Soporte Presencial</MudSelectItem>
+                        <MudSelectItem T="int?" Value="3">Cambio de Equipo</MudSelectItem>
+                        <MudSelectItem T="int?" Value="4">Gestión con Proveedor</MudSelectItem>
+                    </MudSelect>
+
+                    <MudSelect T="int?" @bind-Value="IdTecnicoEncargado" Label="Técnico Encargado" Variant="Variant.Outlined" Margin="Margin.Dense" Class="mb-4" AnchorOrigin="Origin.BottomCenter">
+                        <MudSelectItem T="int?" Value="@((int?)null)" Style="color:gray;" Disabled="true">Seleccione un encargado...</MudSelectItem>
+                        @if (listaTecnicos != null)
+                        {
+                            @foreach (var tecnico in listaTecnicos)
+                            {
+                                <MudSelectItem T="int?" Value="@((int?)tecnico.Id)">@tecnico.NombreCompleto</MudSelectItem>
+                            }
+                        }
+                    </MudSelect>
+
+                    <MudSelect T="int?" @bind-Value="IdEstadoFinal" Label="Estado Final" Variant="Variant.Outlined" Margin="Margin.Dense" Class="mb-4" AnchorOrigin="Origin.BottomCenter">
+                        <MudSelectItem T="int?" Value="@((int?)null)" Style="color:gray;"><em>Seleccione una opción</em></MudSelectItem>
+                        <MudSelectItem T="int?" Value="2">Asignado</MudSelectItem>
+                        <MudSelectItem T="int?" Value="3">Gestionado</MudSelectItem>
+                        <MudSelectItem T="int?" Value="4">Cancelado</MudSelectItem>
+                        <MudSelectItem T="int?" Value="5">Finalizado</MudSelectItem>
+                    </MudSelect>
+
+                    <MudTextField T="string" @bind-Value="Descripcionsolucion" Label="Bitácora / Descripción de la Solución Técnica" Variant="Variant.Outlined" Margin="Margin.Dense" Lines="5" Class="mb-4" />
+
+                    <div class="d-flex justify-end mt-4">
+                        <MudButton Variant="Variant.Filled" Color="Color.Success" Size="Size.Large" OnClick="GuardarResolucion" Disabled="@isProcessing">
+                            @if (isProcessing)
+                            {
+                                <MudProgressCircular Class="ms-n1" Size="Size.Small" Indeterminate="true" /> <MudText Class="ms-2">Guardando...</MudText>
+                            }
+                            else
+                            {
+                                <MudIcon Icon="@Icons.Material.Filled.Save" Class="mr-2" /> <text>Aplicar Resolución</text>
+                            }
+                        </MudButton>
+                    </div>
+                </MudPaper>
+            </MudItem>
+            
+        </MudGrid>
+    }
+</MudContainer>
+
+@code {
+    [Parameter]
+    public int? IdIncidenciaCargar { get; set; }
+
+    // Variables del Buscador Inteligente
+    private IncidenciaResponsesDto? IncidenciaSeleccionada;
+    private IEnumerable<IncidenciaResponsesDto> baseDeTickets = new List<IncidenciaResponsesDto>();
+
+    private int? TicketABuscar;
+    private bool isSearching = false;
+    private bool isProcessing = false;
+    private IncidenciaResponsesDto? incidenciaCargada;
+
+    private int? IdTipoIncidenciaReal { get; set; }
+    private int? IdCategoriaSolucion { get; set; }
+    private int? IdTecnicoEncargado { get; set; }
+    private int? IdEstadoFinal { get; set; }
+    private string? Descripcionsolucion { get; set; }
+
+    private List<TecnicoResponsesDto>? listaTecnicos;
+
+    public class TecnicoResponsesDto
+    {
+        public int Id { get; set; }
+        public string Nombre { get; set; }
+        public string Apellido { get; set; }
+        public string NombreCompleto => $"{Nombre} {Apellido}";
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        // Simulamos la carga de técnicos
+        listaTecnicos = new List<TecnicoResponsesDto>
+        {
+            new TecnicoResponsesDto { Id = 1, Nombre = "Técnico", Apellido = "1" },
+            new TecnicoResponsesDto { Id = 2, Nombre = "Técnico", Apellido = "2" }
+        };
+
+        // Descargamos la base de tickets silenciosamente para alimentar el buscador inteligente
+        await CargarTicketsParaBuscador();
+    }
+
+    private async Task CargarTicketsParaBuscador()
+    {
+        try
+        {
+            var resultado = await http.GetFromJsonAsync<List<IncidenciaResponsesDto>>("api/incidencia");
+            if (resultado != null)
+            {
+                // Ordenamos para que los más recientes salgan primero en la lista
+                baseDeTickets = resultado.OrderByDescending(t => t.Id).ToList();
+            }
+        }
+        catch { /* Error silencioso, el buscador quedará vacío pero no tumbará la app */ }
+    }
+
+    // EL CEREBRO DEL BUSCADOR
+  private async Task<IEnumerable<IncidenciaResponsesDto>> BuscarTicketsGlobal(string valor, CancellationToken token)
+    {
+        // Si el técnico da clic y no escribe nada, le mostramos los 10 más recientes
+        if (string.IsNullOrWhiteSpace(valor))
+            return baseDeTickets.Take(10);
+
+        var busqueda = valor.ToLower();
+
+        // Filtramos por ID, Estado, Usuario, Tipo o Fecha instantáneamente
+        return baseDeTickets.Where(x =>
+            x.Id.ToString().Contains(busqueda) ||
+            (x.Estado?.ToLower().Contains(busqueda) == true) ||
+            (x.TipoIncidencia?.ToLower().Contains(busqueda) == true) ||
+            (x.NombreUsuario?.ToLower().Contains(busqueda) == true) ||
+            Convert.ToDateTime(x.FechaIncidencia).ToString("dd/MMM/yyyy").ToLower().Contains(busqueda)
+        ).Take(15);
+    }
+
+    private async Task BuscarDesdeAutocomplete()
+    {
+        if (IncidenciaSeleccionada != null)
+        {
+            TicketABuscar = IncidenciaSeleccionada.Id;
+            await BuscarIncidencia();
+        }
+    }
+
+    protected override async Task OnParametersSetAsync()
+    {
+        if (IdIncidenciaCargar.HasValue)
+        {
+            TicketABuscar = IdIncidenciaCargar.Value; 
+            await BuscarIncidencia();
+        }
+    }
+
+    private async Task BuscarIncidencia()
+    {
+        if (TicketABuscar == null || TicketABuscar <= 0)
+        {
+            snackbar.Add("Por favor seleccione un ticket válido.", Severity.Warning);
+            return;
+        }
+        isSearching = true;
+        try
+        {
+            var response = await http.GetAsync($"api/incidencia/{TicketABuscar}");
+            
+            if (response.IsSuccessStatusCode)
+            {
+                incidenciaCargada = await response.Content.ReadFromJsonAsync<IncidenciaResponsesDto>();
+                if (incidenciaCargada != null)
+                {
+                    snackbar.Add($"Ticket #{TicketABuscar} cargado correctamente.", Severity.Success);
+                    
+                    Descripcionsolucion = null;
+                    IdTipoIncidenciaReal = null;
+                    IdCategoriaSolucion = null;
+                    IdTecnicoEncargado = null;
+                    IdEstadoFinal = null;
+                }
+            }
+            else
+            {
+                snackbar.Add($"Ticket #{TicketABuscar} no encontrado.", Severity.Error);
+                incidenciaCargada = null;
+            }
+        }
+        catch (Exception ex)
+        {
+            snackbar.Add($"Error de conexión: {ex.Message}", Severity.Error);
+        }
+        finally
+        {
+            isSearching = false;
+            await InvokeAsync(StateHasChanged);
+        }
+    }
+
+    private async Task GuardarResolucion()
+    {
+        if (!IdTipoIncidenciaReal.HasValue || !IdEstadoFinal.HasValue || string.IsNullOrWhiteSpace(Descripcionsolucion))
+        {
+            snackbar.Add("Por favor complete los campos obligatorios.", Severity.Warning);
+            return;
+        }
+        isProcessing = true;
+
+        try
+        {
+            var resolverDto = new IncidenciaResolverDto
+            {
+                Id = incidenciaCargada.Id,
+                IdTipoIncidencia = IdTipoIncidenciaReal.Value,
+                IdTipoSolucion = IdCategoriaSolucion ?? 0, 
+                IdEncargado = IdTecnicoEncargado, 
+                IdEstado = IdEstadoFinal.Value,
+                Descripcionsolucion = Descripcionsolucion ?? ""
+            };
+
+            var response = await http.PutAsJsonAsync($"api/incidencia/responder", resolverDto);
+
+            if (response.IsSuccessStatusCode)
+            {
+                snackbar.Add($"Resolución aplicada con éxito al Ticket #{resolverDto.Id}", Severity.Success);
+                
+                TicketABuscar = null;
+                incidenciaCargada = null; 
+                IncidenciaSeleccionada = null; // Limpiamos el buscador
+                
+                await Task.Yield(); 
+
+                Descripcionsolucion = null;
+                IdTipoIncidenciaReal = null;
+                IdCategoriaSolucion = null;
+                IdTecnicoEncargado = null;
+                IdEstadoFinal = null;
+            }
+            else
+            {
+                var error = await response.Content.ReadAsStringAsync();
+                snackbar.Add($"Error al guardar: {error}", Severity.Error);
+            }
+        }
+        catch (Exception ex)
+        {
+            snackbar.Add($"Error de conexión: {ex.Message}", Severity.Error);
+        }
+        finally
+        {
+            isProcessing = false;
+            await InvokeAsync(StateHasChanged);
+        }
+    }
+
+    public class IncidenciaResolverDto
+    {
+        public int Id { get; set; }
+        public int IdTipoIncidencia { get; set; }
+        public int IdTipoSolucion { get; set; }
+        public int? IdEncargado { get; set; }
+        public int IdEstado { get; set; }
+        public string Descripcionsolucion { get; set; } = string.Empty;
+    }
+}

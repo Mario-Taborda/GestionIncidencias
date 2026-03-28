@@ -1,0 +1,11 @@
+C:\Users\LENOVO\source\repos\GestionIncidencias\GestionIncidencias.Domain\bin\Debug\net10.0\GestionIncidencias.Domain.deps.json
+C:\Users\LENOVO\source\repos\GestionIncidencias\GestionIncidencias.Domain\bin\Debug\net10.0\GestionIncidencias.Domain.dll
+C:\Users\LENOVO\source\repos\GestionIncidencias\GestionIncidencias.Domain\bin\Debug\net10.0\GestionIncidencias.Domain.pdb
+C:\Users\LENOVO\source\repos\GestionIncidencias\GestionIncidencias.Domain\obj\Debug\net10.0\GestionIncidencias.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\LENOVO\source\repos\GestionIncidencias\GestionIncidencias.Domain\obj\Debug\net10.0\GestionIncidencias.Domain.AssemblyInfoInputs.cache
+C:\Users\LENOVO\source\repos\GestionIncidencias\GestionIncidencias.Domain\obj\Debug\net10.0\GestionIncidencias.Domain.AssemblyInfo.cs
+C:\Users\LENOVO\source\repos\GestionIncidencias\GestionIncidencias.Domain\obj\Debug\net10.0\GestionIncidencias.Domain.csproj.CoreCompileInputs.cache
+C:\Users\LENOVO\source\repos\GestionIncidencias\GestionIncidencias.Domain\obj\Debug\net10.0\GestionIncidencias.Domain.dll
+C:\Users\LENOVO\source\repos\GestionIncidencias\GestionIncidencias.Domain\obj\Debug\net10.0\refint\GestionIncidencias.Domain.dll
+C:\Users\LENOVO\source\repos\GestionIncidencias\GestionIncidencias.Domain\obj\Debug\net10.0\GestionIncidencias.Domain.pdb
+C:\Users\LENOVO\source\repos\GestionIncidencias\GestionIncidencias.Domain\obj\Debug\net10.0\ref\GestionIncidencias.Domain.dll

@@ -1,0 +1,109 @@
+﻿@page "/AtencionIncidencia"
+@inject HttpClient http
+@inject ISnackbar snackbar
+@using GestionIncidencias.Domain.DTO.Requests
+@using GestionIncidencias.Domain.DTO.Responses
+
+<MudContainer Fluid="true" Class="mt-4 px-10">
+    <MudPaper Elevation="3" Class="pa-6 mb-4" Style="border-left: 8px solid #ffc107;">
+        <MudText Typo="Typo.h5" Class="mb-4">Módulo de Atención Técnica</MudText>
+
+ 
+        <MudGrid align-center>
+            <MudItem xs="8" sm="4">
+                <MudTextField @bind-Value="idBusqueda" Label="Buscar por ID de Incidencia"
+                              Variant="Variant.Outlined" Margin="Margin.Dense" Type="InputType.Number" />
+            </MudItem>
+            <MudItem xs="4">
+                <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="BuscarIncidencia">Buscar</MudButton>
+            </MudItem>
+        </MudGrid>
+    </MudPaper>
+
+    @if (incidenciaCargada != null)
+    {
+        <MudGrid>
+            <MudItem xs="12" md="6">
+                <MudPaper Class="pa-4" Style="background-color: #f5f5f5;">
+                    <MudText Typo="Typo.h6" Color="Color.Error">Datos del Reporte</MudText>
+                    <MudDivider Class="my-2" />
+                    <MudText><b>Usuario:</b> @incidenciaCargada.NombreUsuario</MudText>
+                    <MudText><b>Problema:</b> @incidenciaCargada.DescripcionProblema</MudText>
+                    <MudText><b>Prioridad:</b> @incidenciaCargada.Prioridad</MudText>
+                    @if (!string.IsNullOrEmpty(incidenciaCargada.ImagenBase64))
+                    {
+                        <MudImage Src='@($"data:image/png;base64,{incidenciaCargada.ImagenBase64}")'
+                                  Alt="Evidencia" Fluid="true" Class="rounded-lg mt-2" />
+                    }
+                </MudPaper>
+            </MudItem>
+
+            <MudItem xs="12" md="6">
+                <MudPaper Class="pa-4" Style="border: 2px solid #ffc107;">
+                    <MudText Typo="Typo.h6" Style="color: #000;">Respuesta Técnica</MudText>
+                    <MudDivider Class="my-2" />
+
+                    <MudSelect T="int" @bind-Value="resolverDto.IdTipoIncidencia" Label="Clasificación Técnica"
+                               Variant="Variant.Outlined" Class="mb-4">
+                        <MudSelectItem Value="1">Hardware</MudSelectItem>
+                        <MudSelectItem Value="2">Software</MudSelectItem>
+                        <MudSelectItem Value="3">Red</MudSelectItem>
+                    </MudSelect>
+
+                    <MudTextField T="string" @bind-Value="resolverDto.Descripcionsolucion"
+                                  Label="DescripcionSolución" Variant="Variant.Outlined"
+                                  Lines="5" Class="mb-4" />
+
+                    <MudSelect T="int" @bind-Value="resolverDto.IdEstado" Label="Nuevo Estado"
+                               Variant="Variant.Outlined" Class="mb-4">
+                        <MudSelectItem Value="3">Gestionado</MudSelectItem>
+                        <MudSelectItem Value="5">Finalizado</MudSelectItem>
+                    </MudSelect>
+
+                    <MudButton Variant="Variant.Filled" Color="Color.Success" FullWidth="true"
+                               OnClick="EnviarResolucion" Size="Size.Large">
+                        Guardar Respuesta y Notificar
+                    </MudButton>
+                </MudPaper>
+            </MudItem>
+        </MudGrid>
+    }
+</MudContainer>
+
+@code {
+    private int idBusqueda;
+    private IncidenciaResponsesDto? incidenciaCargada;
+    private IncidenciaResolverDto resolverDto = new();
+
+    private async Task BuscarIncidencia()
+    {
+        try
+        {
+            incidenciaCargada = await http.GetFromJsonAsync<IncidenciaResponsesDto>($"api/incidencia/{idBusqueda}");
+            if (incidenciaCargada != null)
+            {
+                resolverDto.Id = incidenciaCargada.Id;
+                resolverDto.IdEstado = 3; 
+            }
+        }
+        catch
+        {
+            snackbar.Add("No se encontró ninguna incidencia con ese ID", Severity.Error);
+        }
+    }
+    private async Task EnviarResolucion()
+    {
+        if (string.IsNullOrWhiteSpace(resolverDto.Descripcionsolucion))
+        {
+            snackbar.Add("Debe describir la solución aplicada", Severity.Warning);
+            return;
+        }
+        var response = await http.PutAsJsonAsync($"api/incidencia/responder", resolverDto);
+        if (response.IsSuccessStatusCode)
+        {
+            snackbar.Add("Respuesta técnica guardada correctamente", Severity.Success);
+            incidenciaCargada = null; 
+            idBusqueda = 0;
+        }
+    }
+}

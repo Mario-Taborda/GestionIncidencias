@@ -1,0 +1,8 @@
+<Solution>
+  <Project Path="GestionIncidencias.Api/GestionIncidencias.Api.csproj" />
+  <Project Path="GestionIncidencias.Application/GestionIncidencias.Application.csproj" />
+  <Project Path="GestionIncidencias.Bussiness/GestionIncidencias.Bussiness.csproj" />
+  <Project Path="GestionIncidencias.Domain/GestionIncidencias.Domain.csproj" />
+  <Project Path="GestionIncidencias.Infraestructure/GestionIncidencias.Infraestructure.csproj" />
+  <Project Path="GestionIncidencias.Web/GestionIncidencias.Web.csproj" />
+</Solution>

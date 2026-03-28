@@ -1,0 +1,452 @@
+﻿@page "/Incidencia"
+@page "/Incidencia/{IdIncidenciaCargar:int}"
+@implements IDisposable
+@inject IJSRuntime JSRuntime
+@using global::GestionIncidencias.Domain.DTO.Requests
+@using global::GestionIncidencias.Domain.DTO.Responses
+@using global::GestionIncidencias.Domain.Entities
+@using global::GestionIncidencias.Domain.Enums
+@using MudBlazor
+@inject ISnackbar snackbar
+@inject HttpClient http
+
+<MudContainer Fluid="true" Class="mt-4 px-10" Style="padding-bottom: 200px;">
+
+    <MudPaper Elevation="0" Class="pa-4 mb-6" Style="background-color: #dc3545; border-radius: 8px; border: 2px solid #CCC;">
+        <MudText Typo="Typo.h4" Align="Align.Center" Style="color: white; font-weight: bold; text-transform: uppercase;">Gestion De Incidencias</MudText>
+    </MudPaper>
+
+    <div style="display: flex; justify-content: flex-start; margin-bottom: 20px;">
+        <div style="background-color: #ffc107; color: #000; padding: 10px 20px; border: 2px solid #000; border-radius: 4px; display: flex; align-items: center; box-shadow: 4px 4px 0px #000;">
+            <MudText Style="font-weight: 900; font-family: 'Courier New', Courier, monospace; font-size: 1.5rem;">
+                IDENTIFICACIÓN: @(IdGenerado > 0 ? IdGenerado.ToString("D6") : "------")
+            </MudText>
+        </div>
+    </div>
+
+    <MudPaper Elevation="0" Class="pa-4">
+        <MudGrid Spacing="2" @key="formKey">
+
+            <MudItem xs="12">
+                <MudText Class="pa-2 mb-2" Style="background-color: #dc3545; color: #dc3545; font-weight: bold; border-radius: 6px;"></MudText>
+            </MudItem>
+
+            <MudItem xs="12" sm="6">
+                <MudText Style="background-color: #dc3545; color: white; border: 1px solid #ccc; text-align: center; font-weight: bold; font-size: 16px; padding: 4px; border-bottom: none;">Nombre</MudText>
+                <MudTextField T="string" @bind-Value="Nombre" Label="Nombre" Variant="Variant.Outlined" Margin="Margin.Dense" />
+            </MudItem>
+
+            <MudItem xs="12" sm="6">
+                <MudText Style="background-color: #dc3545; color: white; border: 1px solid #ccc; text-align: center; font-weight: bold; font-size: 16px; padding: 4px; border-bottom: none;">Apellido</MudText>
+                <MudTextField T="string" @bind-Value="Apellido" Label="Apellido" Variant="Variant.Outlined" Margin="Margin.Dense" />
+            </MudItem>
+
+            <MudItem xs="12" sm="6">
+                <MudText Style="background-color: #dc3545; color:white; border: 1px solid #ccc; text-align: center; font-weight: bold; font-size: 16px; padding: 4px; border-bottom: none;">FechaIncidencia</MudText>
+                <MudDatePicker @bind-Value="FechaIncidencia" Label="Fecha Incidencia" Variant="Variant.Outlined" Margin="Margin.Dense" DateFormat="dd/MM/yyyy" Editable="true" />
+            </MudItem>
+
+            <MudItem xs="12" sm="6">
+                <MudText Style="background-color: #dc3545; color:white; border: 1px solid #ccc; text-align: center; font-weight: bold; font-size: 16px; padding: 4px; border-bottom: none;">Email</MudText>
+                <MudTextField T="string" @bind-Value="Email" Label="Email" Variant="Variant.Outlined" Margin="Margin.Dense" />
+            </MudItem>
+
+            <MudItem xs="12" sm="6">
+                <MudText Style="background-color: #dc3545; color:white; border: 1px solid #ccc; text-align: center; font-weight: bold; font-size: 16px; padding: 4px; border-bottom: none;">UsuarioFuente </MudText>
+                <MudTextField T="string" @bind-Value="UsuarioFuente" Label="UsuarioFuente" Variant="Variant.Outlined" Margin="Margin.Dense" />
+            </MudItem>
+
+            <MudItem xs="12" sm="6">
+                <MudText Style="background-color: #dc3545; color:white; border: 1px solid #ccc; text-align: center; font-weight: bold; font-size: 16px; padding: 4px; border-bottom: none;">TipoFuente</MudText>
+                <MudTextField T="string" @bind-Value="TipoFuente" Label="TipoFuente" Variant="Variant.Outlined" Margin="Margin.Dense" />
+            </MudItem>
+
+            <MudItem xs="12" sm="6">
+                <MudText Style="background-color: #dc3545; color:white; border: 1px solid #ccc; text-align: center; font-weight: bold; font-size: 16px; padding: 4px; border-bottom: none;">Area</MudText>
+                <MudTextField T="string" @bind-Value="Area" Label="Area" Variant="Variant.Outlined" Margin="Margin.Dense" />
+            </MudItem>
+
+            <MudItem xs="12" sm="6">
+                <MudText Style="background-color: #dc3545; color:white; border: 1px solid #ccc; text-align: center; font-weight: bold; font-size: 16px; padding: 4px; border-bottom: none;">Usuario</MudText>
+                <MudSelect T="int?" @bind-Value="UsuarioId" Label="Seleccione Usuario" Variant="Variant.Outlined" Margin="Margin.Dense" AnchorOrigin="Origin.BottomCenter">
+                    @if (listaUsuarios == null)
+                    {
+                        <MudSelectItem Value="@((int?)null)" Disabled="true"></MudSelectItem>
+                    }
+                    else
+                    {
+                        @foreach (var user in listaUsuarios)
+                        {
+                            <MudSelectItem T="int?" Value="@((int?)user.Id)">@user.Nombre @user.Apellido</MudSelectItem>
+                        }
+                    }
+                </MudSelect>
+            </MudItem>
+
+            <MudItem xs="12" sm="6">
+                <MudText Style="background-color: #dc3545; color:white; border: 1px solid #ccc; text-align:center; font-weight: bold; font-size: 16px; padding: 4px; border-bottom: none;">TipoIncidencia</MudText>
+                <MudSelect T="int?" @bind-Value="TipoIncidencia" Label="Seleccione una opcion" Variant="Variant.Outlined" Margin="Margin.Dense">
+                    <MudSelectItem T="int?" Value="1" Style="color: #FF8c00; font-weight: bold;">
+                        <div class="d-flex align-center">
+                            <MudIcon Icon="@Icons.Material.Filled.Computer" Class="mr-2" Size="Size.Small" />
+                            <span>Hardware<small>(Pc, Impresora, Servidor)</small></span>
+                        </div>
+                    </MudSelectItem>
+
+                    <MudSelectItem T="int?" Value="2" Style="color: #1976d2; font-weight: bold;">
+                        <div class="d-flex align-center">
+                            <MudIcon Icon="@Icons.Material.Filled.Computer" Class="mr-2" Size="Size.Small" />
+                            <span>Software<small>(Virus, Accesos No-Autorizados)</small></span>
+                        </div>
+                    </MudSelectItem>
+
+                    <MudSelectItem T="int?" Value="3" Style="color: #9c27b0; font-weight: bold;">
+                        <div class="d-flex align-center">
+                            <MudIcon Icon="@Icons.Material.Filled.Computer" Class="mr-2" Size="Size.Small" />
+                            <span>Red<small>(Internet, Vpn, Cableado)</small></span>
+                        </div>
+                    </MudSelectItem>
+
+                    <MudSelectItem T="int?" Value="4" Style="color: #455a64; font-weight: bold;">
+                        <div class="d-flex align-center">
+                            <MudIcon Icon="@Icons.Material.Filled.Computer" Class="mr-2" Size="Size.Small" />
+                            <span>Servidor<small>(Aplicaciones, Licencias, Errores)</small></span>
+                        </div>
+                    </MudSelectItem>
+                </MudSelect>
+            </MudItem>
+
+            <MudItem xs="12" sm="6"></MudItem>
+
+            <MudItem xs="12" sm="6">
+                <MudText Style="background-color: #dc3545; color:white; border: 1px solid #ccc; text-align: center; font-weight: bold; font-size: 16px; padding: 4px; border-bottom: none;">Descripción del problema</MudText>
+                <div style="border: 1px solid #ccc; height: 265px; border-radius: 0 0 8px 8px; background-color: #fafafa;">
+                    <MudTextField T="string" @bind-Value="DescripcionProblema" Placeholder="Descripcion De la Novedad" Variant="Variant.Text" Lines="9" Underline="false" Style="padding: 10px; width: 100%;" />
+                </div>
+            </MudItem>
+
+            <MudItem xs="12" sm="6">
+                <MudText Style="background-color: #dc3545; color:white; border: 1px solid #ccc; text-align: center; font-weight: bold; font-size: 16px; padding: 4px; border-bottom: none;">Captura de pantalla</MudText>
+                <div id="ContenedorImagen" tabindex="0" style="border: 1px solid #ccc; height: 265px; border-radius: 0 0 8px 8px; display: flex; align-items: center; justify-content: center; background-color: #fafafa; position: relative;">
+                    @if (string.IsNullOrEmpty(ImagenBase64))
+                    {
+                        <div class="d-flex flex-column align-center">
+                            <MudIcon Icon="@Icons.Material.Filled.AddPhotoAlternate" Color="Color.Secondary" Style="font-size: 3rem;" />
+                            <MudText Typo="Typo.caption" Class="mb-3">Pegue su imagen (Ctrl+V)</MudText>
+                            
+                        <MudFileUpload T="IBrowserFile" Accept=".jpg, .jpeg, .png" FilesChanged="CargarImagenDesdeArchivo">
+                            <ActivatorContent>
+                                <MudButton HtmlTag="label"
+                                           Variant="Variant.Filled"
+                                           Color="Color.Primary"
+                                           Size="Size.Small"
+                                           StartIcon="@Icons.Material.Filled.CloudUpload">
+                                    Cargar Imagen
+                                </MudButton>
+                            </ActivatorContent>
+                        </MudFileUpload>
+                        </div>
+                    }
+                    else
+                    {
+                        <div style="width:100%; height:100%; display:flex; justify-content:center;">
+                            <MudIconButton Icon="@Icons.Material.Filled.Close" Color="Color.Error" OnClick="BorrarImagen" Style="position: absolute; top: 5px; right: 5px; z-index:10;" />
+                            <img src="data:image/png;base64,@ImagenBase64" style="max-height: 100%; max-width: 100%; object-fit: contain;" />
+                        </div>
+                    }
+                </div>
+            </MudItem>
+
+            <MudItem xs="12" sm="6">
+                <MudText Style="background-color: #dc3545; color:white; border: 1px solid #ccc; text-align:center; font-weight: bold; font-size: 16px; padding: 4px; border-bottom: none;">Prioridad</MudText>
+                <MudSelect T="int?" @bind-Value="Prioridad" Label="Seleccione una opción" Variant="Variant.Outlined" Margin="Margin.Dense">
+                    <MudSelectItem T="int?" Value="1">
+                        <div class="d-flex align-center" style="color: #dc3545; font-weight: bold;">
+                            <MudIcon Icon="@Icons.Material.Filled.Circle" Color="Color.Error" Size="Size.Small" Class="mr-2" />Alta
+                        </div>
+                    </MudSelectItem>
+                    <MudSelectItem T="int?" Value="2">
+                        <div class="d-flex align-center" style="color: #0056ff; font-weight: bold;">
+                            <MudIcon Icon="@Icons.Material.Filled.Circle" Color="Color.Info" Size="Size.Small" Class="mr-2" />Media
+                        </div>
+                    </MudSelectItem>
+                    <MudSelectItem T="int?" Value="3">
+                        <div class="d-flex align-center" style="color: #28a745; font-weight: bold;">
+                            <MudIcon Icon="@Icons.Material.Filled.Circle" Color="Color.Success" Size="Size.Small" Class="mr-2" />Baja
+                        </div>
+                    </MudSelectItem>
+                </MudSelect>
+            </MudItem>
+
+            <MudItem xs="12">
+                <MudText Style="background-color: #dc3545; color:white; border: 1px solid #ccc; text-align:center; font-weight: bold; font-size: 16px; padding: 4px; border-bottom: none;">Requerimiento</MudText>
+                <MudTextField T="string" @bind-Value="Requerimiento" Variant="Variant.Outlined" Margin="Margin.Dense" Lines="3" />
+                <MudAlert Severity="Severity.Normal" NoIcon="true" Class="mt-8" Style="background-color: #ffc107; font-size: 12px; color: black;">
+                    <strong>Dato Específico:</strong> Utilice este campo solo si su solicitud requiere la asignación de un equipo de cómputo o implemento tecnológico para desarrollar su labor.
+                    Si no requiere equipos, puede dejar este campo vacío.
+                </MudAlert>
+            </MudItem>
+
+            <MudItem xs="12" Class="d-flex justify-end mt-6">
+                <MudButton Variant="Variant.Filled" Color="Color.Info" OnClick="GuardarIncidencia" Disabled="@isProcessing">
+                    @if (isProcessing)
+                    {
+                        <MudProgressCircular Class="ms-n1" Size="Size.Small" Indeterminate="true" />
+                        <MudText Class="ms-2">Enviando...</MudText>
+                    }
+                    else
+                    {
+                        <MudText>Enviar</MudText>
+                    }
+                </MudButton>
+            </MudItem>
+
+        </MudGrid>
+    </MudPaper>
+</MudContainer>
+
+@code {
+    [Parameter]
+    public int? IdIncidenciaCargar { get; set; }
+
+    private bool isProcessing = false;
+    private Guid formKey = Guid.NewGuid();
+
+    public string Nombre { get; set; } = "";
+    public string Apellido { get; set; } = "";
+    public string Email { get; set; } = "";
+    public string Area { get; set; } = "";
+    public string TipoFuente { get; set; } = "";
+    public string UsuarioFuente { get; set; } = "";
+    public string Requerimiento { get; set; } = "";
+    public string DescripcionProblema { get; set; } = "";
+    public int? Prioridad { get; set; }
+    public DateTime? FechaIncidencia { get; set; } = DateTime.Now;
+    public int? TipoIncidencia { get; set; }
+
+    public string? ImagenBase64 { get; set; }
+
+    private int IdGenerado { get; set; }
+
+    private int? _usuarioId;
+    public int? UsuarioId
+    {
+        get => _usuarioId;
+        set
+        {
+            if (_usuarioId != value)
+            {
+                _usuarioId = value;
+                ActualizarDatosUsuario(value);
+            }
+        }
+    }
+    private List<UsuarioResponsesDto>? listaUsuarios;
+    private DotNetObjectReference<Incidencia>? objRef;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await CargarUsuario();
+    }
+    protected override async Task OnParametersSetAsync()
+    {
+        if (IdIncidenciaCargar.HasValue)
+        {
+            await CargarDatosDelTicketViejo(IdIncidenciaCargar.Value);
+        }
+    }
+    private async Task CargarDatosDelTicketViejo(int id)
+    {
+        try
+        {
+            var ticketAnterior = await http.GetFromJsonAsync<IncidenciaResponsesDto>($"api/incidencia/{id}");
+
+            if (ticketAnterior != null)
+            {
+
+                IdGenerado = ticketAnterior.Id;
+                DescripcionProblema = ticketAnterior.DescripcionProblema ?? "";
+                Requerimiento = ticketAnterior.Requerimiento ?? "";
+                ImagenBase64 = ticketAnterior.ImagenBase64;
+
+                snackbar.Add($"Cargando ticket #{id} de la base de datos.", Severity.Info);
+            }
+        }
+        catch (Exception ex)
+        {
+            snackbar.Add($"Error al cargar el ticket: {ex.Message}", Severity.Error);
+        }
+    }
+    private async Task CargarUsuario()
+    {
+        try
+        {
+            var resultado = await http.GetFromJsonAsync<List<UsuarioResponsesDto>>("api/usuario");
+            listaUsuarios = resultado ?? new();
+        }
+        catch (Exception ex)
+        {
+            snackbar.Add($"Error No se Puede Conectar {ex.Message}", Severity.Error);
+            listaUsuarios = new();
+        }
+    }
+    private void ActualizarDatosUsuario(int? id)
+    {
+        var usuario = listaUsuarios?.FirstOrDefault(u => u.Id == id);
+        if (usuario != null)
+        {
+            Nombre = usuario.Nombre;
+            Apellido = usuario.Apellido;
+            Email = usuario.Email;
+        }
+    }
+    private async Task GuardarIncidencia()
+    {
+        if (string.IsNullOrWhiteSpace(DescripcionProblema) ||
+            !TipoIncidencia.HasValue ||
+            !UsuarioId.HasValue ||
+            !Prioridad.HasValue)
+        {
+            snackbar.Add("Por Favor Llenar los Campos Obligatorios: Descripcion, Tipo, Estado, Usuario, Prioridad", Severity.Warning);
+            return;
+        }
+
+        isProcessing = true;
+
+        var nuevaIncidencia = new IncidenciaDto
+        {
+            IdPrioridad = Prioridad ?? 1,
+            IdTipoIncidencia = TipoIncidencia ?? 1,
+            IdEstado = 1,
+            IdUsuario = UsuarioId ?? 0,
+            DescripcionProblema = DescripcionProblema,
+            Requerimiento = Requerimiento,
+            UsuarioFuente = UsuarioFuente,
+            TipoFuente = TipoFuente,
+            ImagenBase64 = ImagenBase64,
+            FechaIncidencia = FechaIncidencia ?? DateTime.Now,
+        };
+
+        try
+        {
+            var response = await http.PostAsJsonAsync("api/incidencia", nuevaIncidencia);
+
+            if (response.IsSuccessStatusCode)
+            {
+                var resultado = await response.Content.ReadFromJsonAsync<IncidenciaResponsesDto>();
+                IdGenerado = resultado?.Id ?? 0;
+
+                snackbar.Add($"Incidencia registrada exitosamente. Ticket #{IdGenerado}", Severity.Success);
+                await LimpiarFormulario(mantenerId: true);
+            }
+            else
+            {
+                var error = await response.Content.ReadAsStringAsync();
+                snackbar.Add($"Error en el servidor: {error}", Severity.Error);
+            }
+        }
+        catch (Exception ex)
+        {
+            snackbar.Add($"Error de conexión: {ex.Message}", Severity.Error);
+        }
+        finally
+        {
+            isProcessing = false;
+            await InvokeAsync(StateHasChanged);
+        }
+    }
+
+    private async Task LimpiarFormulario(bool mantenerId = false)
+    {
+        if (mantenerId == false)
+        {
+            IdGenerado = 0;
+        }
+
+        Nombre = "";
+        Apellido = "";
+        Email = "";
+        Area = "";
+        Requerimiento = "";
+        DescripcionProblema = "";
+        UsuarioFuente = "";
+        TipoFuente = "";
+        Prioridad = null;
+        FechaIncidencia = DateTime.Now;
+        ImagenBase64 = null;
+        TipoIncidencia = null;
+        UsuarioId = null;
+
+        formKey = Guid.NewGuid();
+        await Task.Yield();
+        await Inicializarjs();
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await Inicializarjs();
+        }
+    }
+
+    private async Task Inicializarjs()
+    {
+        try
+        {
+            objRef = DotNetObjectReference.Create(this);
+            await JSRuntime.InvokeVoidAsync("clipboardService.processPaste", "ContenedorImagen", objRef);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error inicializando portapapeles: {ex.Message}");
+        }
+    }
+
+    [JSInvokable]
+    public void ProcesarImagen(string base64)
+    {
+        ImagenBase64 = base64;
+        StateHasChanged();
+        snackbar.Add("Imagen capturada del portapapeles", Severity.Info);
+    }
+
+    private async Task CargarImagenDesdeArchivo(IBrowserFile archivo)
+    {
+        if (archivo != null)
+        {
+            long tamañoMaximo = 3 * 1024 * 1024; 
+            if (archivo.Size > tamañoMaximo)
+            {
+                snackbar.Add("La imagen es muy pesada. El límite máximo es 3 MB.", Severity.Error);
+                return;
+            }
+
+            try
+            {
+                using var stream = archivo.OpenReadStream(tamañoMaximo);
+                using var memoryStream = new MemoryStream();
+                await stream.CopyToAsync(memoryStream);
+                var bytesImagen = memoryStream.ToArray();
+
+                ImagenBase64 = Convert.ToBase64String(bytesImagen);
+                snackbar.Add("Imagen adjuntada correctamente.", Severity.Success);
+            }
+            catch (Exception ex)
+            {
+                snackbar.Add($"Error al procesar la imagen: {ex.Message}", Severity.Error);
+                ImagenBase64 = null;
+            }
+        }
+    }
+
+    private void BorrarImagen()
+    {
+        ImagenBase64 = null;
+        StateHasChanged();
+    }
+    public void Dispose()
+    {
+        objRef?.Dispose();
+    }
+}
