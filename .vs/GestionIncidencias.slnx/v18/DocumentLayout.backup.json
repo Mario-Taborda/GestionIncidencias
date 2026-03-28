@@ -1,7 +1,12 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\LENOVO\\source\\repos\\GestionIncidencias\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{6D5A4614-5508-A370-1B06-C027FC21CAE6}|GestionIncidencias.Web\\GestionIncidencias.Web.csproj|c:\\users\\lenovo\\source\\repos\\gestionincidencias\\gestionincidencias.web\\pages\\incidencia.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{6D5A4614-5508-A370-1B06-C027FC21CAE6}|GestionIncidencias.Web\\GestionIncidencias.Web.csproj|solutionrelative:gestionincidencias.web\\pages\\incidencia.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,7 +14,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
@@ -18,6 +23,19 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Incidencia.razor",
+              "DocumentMoniker": "C:\\Users\\LENOVO\\source\\repos\\GestionIncidencias\\GestionIncidencias.Web\\Pages\\Incidencia.razor",
+              "RelativeDocumentMoniker": "GestionIncidencias.Web\\Pages\\Incidencia.razor",
+              "ToolTip": "C:\\Users\\LENOVO\\source\\repos\\GestionIncidencias\\GestionIncidencias.Web\\Pages\\Incidencia.razor",
+              "RelativeToolTip": "GestionIncidencias.Web\\Pages\\Incidencia.razor",
+              "ViewState": "AgIAAAsBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-03-28T15:31:36.47Z",
+              "EditorCaption": ""
             }
           ]
         }

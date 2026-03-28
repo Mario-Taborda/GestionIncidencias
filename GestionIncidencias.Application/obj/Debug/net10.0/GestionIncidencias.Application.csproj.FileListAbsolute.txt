@@ -9,3 +9,15 @@ C:\Users\prtecnologia01\source\repos\GestionIncidencias\GestionIncidencias.Appli
 C:\Users\prtecnologia01\source\repos\GestionIncidencias\GestionIncidencias.Application\obj\Debug\net10.0\refint\GestionIncidencias.Application.dll
 C:\Users\prtecnologia01\source\repos\GestionIncidencias\GestionIncidencias.Application\obj\Debug\net10.0\GestionIncidencias.Application.pdb
 C:\Users\prtecnologia01\source\repos\GestionIncidencias\GestionIncidencias.Application\obj\Debug\net10.0\ref\GestionIncidencias.Application.dll
+C:\Users\LENOVO\source\repos\GestionIncidencias\GestionIncidencias.Application\bin\Debug\net10.0\GestionIncidencias.Application.deps.json
+C:\Users\LENOVO\source\repos\GestionIncidencias\GestionIncidencias.Application\bin\Debug\net10.0\GestionIncidencias.Application.dll
+C:\Users\LENOVO\source\repos\GestionIncidencias\GestionIncidencias.Application\bin\Debug\net10.0\GestionIncidencias.Application.pdb
+C:\Users\LENOVO\source\repos\GestionIncidencias\GestionIncidencias.Application\obj\Debug\net10.0\GestionIncidencias.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\LENOVO\source\repos\GestionIncidencias\GestionIncidencias.Application\obj\Debug\net10.0\GestionIncidencias.Application.AssemblyInfoInputs.cache
+C:\Users\LENOVO\source\repos\GestionIncidencias\GestionIncidencias.Application\obj\Debug\net10.0\GestionIncidencias.Application.AssemblyInfo.cs
+C:\Users\LENOVO\source\repos\GestionIncidencias\GestionIncidencias.Application\obj\Debug\net10.0\GestionIncidencias.Application.csproj.CoreCompileInputs.cache
+C:\Users\LENOVO\source\repos\GestionIncidencias\GestionIncidencias.Application\obj\Debug\net10.0\GestionIncidencias.Application.sourcelink.json
+C:\Users\LENOVO\source\repos\GestionIncidencias\GestionIncidencias.Application\obj\Debug\net10.0\GestionIncidencias.Application.dll
+C:\Users\LENOVO\source\repos\GestionIncidencias\GestionIncidencias.Application\obj\Debug\net10.0\refint\GestionIncidencias.Application.dll
+C:\Users\LENOVO\source\repos\GestionIncidencias\GestionIncidencias.Application\obj\Debug\net10.0\GestionIncidencias.Application.pdb
+C:\Users\LENOVO\source\repos\GestionIncidencias\GestionIncidencias.Application\obj\Debug\net10.0\ref\GestionIncidencias.Application.dll

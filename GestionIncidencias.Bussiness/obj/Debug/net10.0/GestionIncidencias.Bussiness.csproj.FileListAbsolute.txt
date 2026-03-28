@@ -32,3 +32,4 @@ C:\Users\LENOVO\source\repos\GestionIncidencias\GestionIncidencias.Bussiness\obj
 C:\Users\LENOVO\source\repos\GestionIncidencias\GestionIncidencias.Bussiness\obj\Debug\net10.0\refint\GestionIncidencias.Bussiness.dll
 C:\Users\LENOVO\source\repos\GestionIncidencias\GestionIncidencias.Bussiness\obj\Debug\net10.0\GestionIncidencias.Bussiness.pdb
 C:\Users\LENOVO\source\repos\GestionIncidencias\GestionIncidencias.Bussiness\obj\Debug\net10.0\ref\GestionIncidencias.Bussiness.dll
+C:\Users\LENOVO\source\repos\GestionIncidencias\GestionIncidencias.Bussiness\obj\Debug\net10.0\GestionIncidencias.Bussiness.sourcelink.json

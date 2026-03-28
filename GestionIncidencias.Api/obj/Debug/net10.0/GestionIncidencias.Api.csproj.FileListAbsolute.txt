@@ -346,3 +346,4 @@ C:\Users\LENOVO\source\repos\GestionIncidencias\GestionIncidencias.Api\obj\Debug
 C:\Users\LENOVO\source\repos\GestionIncidencias\GestionIncidencias.Api\obj\Debug\net10.0\GestionIncidencias.Api.pdb
 C:\Users\LENOVO\source\repos\GestionIncidencias\GestionIncidencias.Api\obj\Debug\net10.0\GestionIncidencias.Api.genruntimeconfig.cache
 C:\Users\LENOVO\source\repos\GestionIncidencias\GestionIncidencias.Api\obj\Debug\net10.0\ref\GestionIncidencias.Api.dll
+C:\Users\LENOVO\source\repos\GestionIncidencias\GestionIncidencias.Api\obj\Debug\net10.0\GestionIncidencias.Api.sourcelink.json
