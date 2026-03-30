@@ -74,7 +74,9 @@ namespace GestionIncidencias.Infraestructure.Migrations
                     Apellido = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     Email = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     Area = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    IdUsuario = table.Column<int>(type: "int", maxLength: 50, nullable: false)
+                    IdUsuario = table.Column<int>(type: "int", maxLength: 50, nullable: false),
+                    PasswordHash = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Activo = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {

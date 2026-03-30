@@ -24,6 +24,15 @@
                 <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span> Weather
             </NavLink>
         </div> *@
+
+<div class="nav-item px-3">
+    <NavLink class="nav-link d-flex align-items-center justify-content-center"
+             href="Login"
+             style="background-color: white; color: red; border-radius: 8px; margin: 10px 0; padding: 10px; font-weight: bold; text-decoration: none; border: 1px solid #1e7e34;">
+        <span class="bi bi-list-nested-nav-menu" aria-hidden="true" style="margin-right: 10px; font-size: 1.2rem;"></span>
+        Login
+    </NavLink>
+</div>
  <div class="nav-item px-3">
     <NavLink class="nav-link d-flex align-items-center justify-content-center" 
              href="Incidencia" 
@@ -49,13 +58,3 @@
         Dashboard
     </NavLink>
 </div>
-@code {
-    private bool collapseNavMenu = true;
-
-    private string? NavMenuCssClass => collapseNavMenu ? "collapse" : null;
-
-    private void ToggleNavMenu()
-    {
-        collapseNavMenu = !collapseNavMenu;
-    }
-}

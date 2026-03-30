@@ -27,9 +27,9 @@ C:\Users\LENOVO\source\repos\GestionIncidencias\GestionIncidencias.Bussiness\obj
 C:\Users\LENOVO\source\repos\GestionIncidencias\GestionIncidencias.Bussiness\obj\Debug\net10.0\GestionIncidencias.Bussiness.AssemblyInfoInputs.cache
 C:\Users\LENOVO\source\repos\GestionIncidencias\GestionIncidencias.Bussiness\obj\Debug\net10.0\GestionIncidencias.Bussiness.AssemblyInfo.cs
 C:\Users\LENOVO\source\repos\GestionIncidencias\GestionIncidencias.Bussiness\obj\Debug\net10.0\GestionIncidencias.Bussiness.csproj.CoreCompileInputs.cache
+C:\Users\LENOVO\source\repos\GestionIncidencias\GestionIncidencias.Bussiness\obj\Debug\net10.0\GestionIncidencias.Bussiness.sourcelink.json
 C:\Users\LENOVO\source\repos\GestionIncidencias\GestionIncidencias.Bussiness\obj\Debug\net10.0\GestionI.07114E7F.Up2Date
 C:\Users\LENOVO\source\repos\GestionIncidencias\GestionIncidencias.Bussiness\obj\Debug\net10.0\GestionIncidencias.Bussiness.dll
 C:\Users\LENOVO\source\repos\GestionIncidencias\GestionIncidencias.Bussiness\obj\Debug\net10.0\refint\GestionIncidencias.Bussiness.dll
 C:\Users\LENOVO\source\repos\GestionIncidencias\GestionIncidencias.Bussiness\obj\Debug\net10.0\GestionIncidencias.Bussiness.pdb
 C:\Users\LENOVO\source\repos\GestionIncidencias\GestionIncidencias.Bussiness\obj\Debug\net10.0\ref\GestionIncidencias.Bussiness.dll
-C:\Users\LENOVO\source\repos\GestionIncidencias\GestionIncidencias.Bussiness\obj\Debug\net10.0\GestionIncidencias.Bussiness.sourcelink.json

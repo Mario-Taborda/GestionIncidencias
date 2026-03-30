@@ -1,5 +1,5 @@
 self.assetsManifest = {
-  "version": "WrFSkV0O",
+  "version": "CRqvxSNa",
   "assets": [
     {
       "hash": "sha256-Joeft04yjPohUm6gIWxE/VrxwxfKfGnoDMgnZy+H/wQ=",
@@ -38,40 +38,44 @@ self.assetsManifest = {
       "url": "_framework/Azure.Identity.q3kp98qd6v.wasm"
     },
     {
-      "hash": "sha256-eRQGd4gNtAVBN7oa4hnrUUOoBgNfOwJEWtUHrAk4nQA=",
-      "url": "_framework/GestionIncidencias.Bussiness.5hhc5r81fq.wasm"
+      "hash": "sha256-nbdlczPBKiOM9c7GhcUS9lYHtdyJbzsYbqpDq+lxJfY=",
+      "url": "_framework/GestionIncidencias.Bussiness.j4gzkynl14.pdb"
     },
     {
-      "hash": "sha256-O4H4rs0aFi+Dci3zSFSpHkHhjfi9SxvQHRpNjB+/7Xw=",
-      "url": "_framework/GestionIncidencias.Bussiness.dmyi76csfp.pdb"
+      "hash": "sha256-j/nC8JYMBy02k8yJS4KfiR9zSrMvgxgG6jMSVSCzrTE=",
+      "url": "_framework/GestionIncidencias.Bussiness.z3ous28rxg.wasm"
     },
     {
-      "hash": "sha256-dFnMZCKx5PAHkL4SJwilmfeygglq3LhKGXap9ur/iFU=",
-      "url": "_framework/GestionIncidencias.Domain.40rjiu0bxd.wasm"
+      "hash": "sha256-MXQ2h7mlbQZXAjpipDV0pcjgcKeTqH2EO728k4CxhFE=",
+      "url": "_framework/GestionIncidencias.Domain.96tuhdgafl.pdb"
     },
     {
-      "hash": "sha256-29TPghqvjlAdEEs9feNCiU3/Ut0cOQLpOU6+pDz9OMA=",
-      "url": "_framework/GestionIncidencias.Domain.n5lzniowwy.pdb"
+      "hash": "sha256-cOBTaR5KN3s+w8hjrUOuWvsqVa28QU2VK7WJhkogfyE=",
+      "url": "_framework/GestionIncidencias.Domain.s9d1v6hehk.wasm"
     },
     {
-      "hash": "sha256-Z69y9C1qoX+DSYjcBwlqvgoDBVrqDiZxG5xZd4ILeXI=",
-      "url": "_framework/GestionIncidencias.Infraestructure.dbwcau6dpa.pdb"
+      "hash": "sha256-uEUrjOw/bsgIRZ8LRR+3UJJG2KsJ1IvN301ninYaq9k=",
+      "url": "_framework/GestionIncidencias.Infraestructure.cnn88dkedb.pdb"
     },
     {
-      "hash": "sha256-GmRpg+Iq5LpxV1FwgHwaNYnulOity9AJhX5tPoUEiPo=",
-      "url": "_framework/GestionIncidencias.Infraestructure.ef7akv7p2e.wasm"
+      "hash": "sha256-lo3QsvqqPpMNmDcZ2+z2pKdbLSIpA/9gLHuXlqWddko=",
+      "url": "_framework/GestionIncidencias.Infraestructure.eqalcq7zp1.wasm"
     },
     {
-      "hash": "sha256-wlMm9GjbryN9OA9qOYjJf202sHl+b7Km+Kq2Ka3gn1Y=",
-      "url": "_framework/GestionIncidencias.Web.qimrtf5qq1.pdb"
+      "hash": "sha256-XD1+sinQXwSKC32ZMbIxmiaW7KHqUm2RwfmvubFfmzw=",
+      "url": "_framework/GestionIncidencias.Web.cmk14kdmsr.pdb"
     },
     {
-      "hash": "sha256-rPLO98hJCX+/bxjpm/J3WVTEEp1ioNxtwK/bQ2Ik4yc=",
-      "url": "_framework/GestionIncidencias.Web.s6ei9vfylm.wasm"
+      "hash": "sha256-powXWTphc7wuX9UvWkbDDoRst+/do2MwI25zpZJ5wpg=",
+      "url": "_framework/GestionIncidencias.Web.ydbwnhbyk0.wasm"
     },
     {
       "hash": "sha256-G2MGZ9ewONcPR9sDqM6GscLX+imqgtCbSDJmYjkq0rc=",
       "url": "_framework/Microsoft.AspNetCore.Authorization.roqc1km2rj.wasm"
+    },
+    {
+      "hash": "sha256-Dg1gceYfBzhkXVn9ZjAKzBAN3ps0usiNVCkHrdyUwQI=",
+      "url": "_framework/Microsoft.AspNetCore.Components.Authorization.uo1a6owr17.wasm"
     },
     {
       "hash": "sha256-sTHEhK4OXluS5QYyGPIkfDxAb1DqOuLKpTaWfiJmwgQ=",
@@ -982,6 +986,10 @@ self.assetsManifest = {
       "url": "_framework/de/Microsoft.Data.SqlClient.resources.nfz5myq13k.wasm"
     },
     {
+      "hash": "sha256-v5Y6s/qrJdWnDQcynWEwL/4KBsTF2L6tVLqHBF+7sbI=",
+      "url": "_framework/dotnet.d5k1p176yu.js"
+    },
+    {
       "hash": "sha256-YwxiiEhCXmzuIa/AehWcnzZpD4E5j8bDNKlMLBw8ews=",
       "url": "_framework/dotnet.js.map"
     },
@@ -1000,10 +1008,6 @@ self.assetsManifest = {
     {
       "hash": "sha256-ArknccFM1sHNVcih0x1h52AG+abNCoQjl6BlVrv3ePw=",
       "url": "_framework/dotnet.runtime.q5rqv3xrhm.js"
-    },
-    {
-      "hash": "sha256-GCMOrnttIi5YYG4CEaW+IkwhADyq+PNMRuv+Pq2iVI0=",
-      "url": "_framework/dotnet.wq9jbgwpaj.js"
     },
     {
       "hash": "sha256-fxsSpnxfv3Yd0i8pFwbWiPXpOjKQXTQM49O4G9kn5a4=",

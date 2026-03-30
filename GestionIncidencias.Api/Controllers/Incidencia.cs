@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace GestionIncidencias.Api.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     [Produces("application/json")]
@@ -18,7 +19,7 @@ namespace GestionIncidencias.Api.Controllers
         {
             _incidenciaService = incidenciaService;
         }
-
+        [Authorize]
         [HttpGet]
         [AllowAnonymous]
         [ProducesResponseType(typeof(IEnumerable<IncidenciaResponsesDto>), StatusCodes.Status200OK)]
@@ -41,7 +42,7 @@ namespace GestionIncidencias.Api.Controllers
 
             return Ok(incidencia);
         }
-
+        [Authorize]
         [HttpPost]
         [AllowAnonymous]
         [ProducesResponseType(typeof(IncidenciaResponsesDto), StatusCodes.Status201Created)]
@@ -106,14 +107,11 @@ namespace GestionIncidencias.Api.Controllers
         {
             try
             {
-                // 1. Traemos los datos de la base de datos
+       
                 var incidencias = await _incidenciaService.GetAllIncidenciaAsync();
-
-                // 2. Creamos el archivo de Excel en blanco
                 using var workbook = new XLWorkbook();
                 var worksheet = workbook.Worksheets.Add("Historial Incidencias");
 
-                // 3. Pintamos la Cabecera (Fila 1)
                 worksheet.Cell(1, 1).Value = "N° Ticket";
                 worksheet.Cell(1, 2).Value = "Fecha Reporte";
                 worksheet.Cell(1, 3).Value = "Usuario Solicitante";
@@ -121,13 +119,10 @@ namespace GestionIncidencias.Api.Controllers
                 worksheet.Cell(1, 5).Value = "Prioridad";
                 worksheet.Cell(1, 6).Value = "Estado Final";
 
-                // Le damos estilo profesional a la cabecera (Azul oscuro y letras blancas)
                 var headerRange = worksheet.Range("A1:F1");
                 headerRange.Style.Font.Bold = true;
                 headerRange.Style.Fill.BackgroundColor = XLColor.DarkBlue;
                 headerRange.Style.Font.FontColor = XLColor.White;
-
-                // 4. Llenamos los datos (Desde la Fila 2 en adelante)
                 int fila = 2;
                 foreach (var inc in incidencias)
                 {
@@ -140,11 +135,8 @@ namespace GestionIncidencias.Api.Controllers
 
                     fila++;
                 }
-
-                // Auto-ajustar el ancho de las columnas al texto
                 worksheet.Columns().AdjustToContents();
 
-                // 5. Convertimos el Excel a un archivo descargable
                 using var stream = new MemoryStream();
                 workbook.SaveAs(stream);
                 var content = stream.ToArray();

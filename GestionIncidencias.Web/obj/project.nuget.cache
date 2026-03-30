@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "kZ3PxgKrjQE=",
+  "dgSpecHash": "VYvY+8BuFnk=",
   "success": true,
   "projectFilePath": "C:\\Users\\LENOVO\\source\\repos\\GestionIncidencias\\GestionIncidencias.Web\\GestionIncidencias.Web.csproj",
   "expectedPackageFiles": [
@@ -12,6 +12,7 @@
     "C:\\Users\\LENOVO\\.nuget\\packages\\microsoft.aspnetcore.authorization\\10.0.5\\microsoft.aspnetcore.authorization.10.0.5.nupkg.sha512",
     "C:\\Users\\LENOVO\\.nuget\\packages\\microsoft.aspnetcore.components\\10.0.5\\microsoft.aspnetcore.components.10.0.5.nupkg.sha512",
     "C:\\Users\\LENOVO\\.nuget\\packages\\microsoft.aspnetcore.components.analyzers\\10.0.5\\microsoft.aspnetcore.components.analyzers.10.0.5.nupkg.sha512",
+    "C:\\Users\\LENOVO\\.nuget\\packages\\microsoft.aspnetcore.components.authorization\\10.0.5\\microsoft.aspnetcore.components.authorization.10.0.5.nupkg.sha512",
     "C:\\Users\\LENOVO\\.nuget\\packages\\microsoft.aspnetcore.components.forms\\10.0.5\\microsoft.aspnetcore.components.forms.10.0.5.nupkg.sha512",
     "C:\\Users\\LENOVO\\.nuget\\packages\\microsoft.aspnetcore.components.web\\10.0.5\\microsoft.aspnetcore.components.web.10.0.5.nupkg.sha512",
     "C:\\Users\\LENOVO\\.nuget\\packages\\microsoft.aspnetcore.components.webassembly\\10.0.5\\microsoft.aspnetcore.components.webassembly.10.0.5.nupkg.sha512",

@@ -5,7 +5,7 @@ var e=!1;const t=async()=>WebAssembly.validate(new Uint8Array([0,97,115,109,1,0,
   "mainAssemblyName": "GestionIncidencias.Web",
   "applicationEnvironment": "Development",
   "resources": {
-    "hash": "sha256-tBJ6qyVkcZKbasRwFfyZiKiTpZuyZKbIsRFGv/rB3NI=",
+    "hash": "sha256-YosOFgQuTRaneJ8VsbtQg4xZCJShqfPH81LdzLTEhl0=",
     "jsModuleNative": [
       {
         "name": "dotnet.native.69poregybn.js"
@@ -92,6 +92,12 @@ var e=!1;const t=async()=>WebAssembly.validate(new Uint8Array([0,97,115,109,1,0,
         "virtualPath": "Microsoft.AspNetCore.Components.wasm",
         "name": "Microsoft.AspNetCore.Components.uddsvpv1sv.wasm",
         "integrity": "sha256-wuWRCfk296hzRmhePje6J3ah5yXcxXEBd706DXJFRQ4=",
+        "cache": "force-cache"
+      },
+      {
+        "virtualPath": "Microsoft.AspNetCore.Components.Authorization.wasm",
+        "name": "Microsoft.AspNetCore.Components.Authorization.uo1a6owr17.wasm",
+        "integrity": "sha256-Dg1gceYfBzhkXVn9ZjAKzBAN3ps0usiNVCkHrdyUwQI=",
         "cache": "force-cache"
       },
       {
@@ -1434,52 +1440,52 @@ var e=!1;const t=async()=>WebAssembly.validate(new Uint8Array([0,97,115,109,1,0,
       },
       {
         "virtualPath": "GestionIncidencias.Bussiness.wasm",
-        "name": "GestionIncidencias.Bussiness.5hhc5r81fq.wasm",
-        "integrity": "sha256-eRQGd4gNtAVBN7oa4hnrUUOoBgNfOwJEWtUHrAk4nQA=",
+        "name": "GestionIncidencias.Bussiness.z3ous28rxg.wasm",
+        "integrity": "sha256-j/nC8JYMBy02k8yJS4KfiR9zSrMvgxgG6jMSVSCzrTE=",
         "cache": "force-cache"
       },
       {
         "virtualPath": "GestionIncidencias.Domain.wasm",
-        "name": "GestionIncidencias.Domain.40rjiu0bxd.wasm",
-        "integrity": "sha256-dFnMZCKx5PAHkL4SJwilmfeygglq3LhKGXap9ur/iFU=",
+        "name": "GestionIncidencias.Domain.s9d1v6hehk.wasm",
+        "integrity": "sha256-cOBTaR5KN3s+w8hjrUOuWvsqVa28QU2VK7WJhkogfyE=",
         "cache": "force-cache"
       },
       {
         "virtualPath": "GestionIncidencias.Infraestructure.wasm",
-        "name": "GestionIncidencias.Infraestructure.ef7akv7p2e.wasm",
-        "integrity": "sha256-GmRpg+Iq5LpxV1FwgHwaNYnulOity9AJhX5tPoUEiPo=",
+        "name": "GestionIncidencias.Infraestructure.eqalcq7zp1.wasm",
+        "integrity": "sha256-lo3QsvqqPpMNmDcZ2+z2pKdbLSIpA/9gLHuXlqWddko=",
         "cache": "force-cache"
       },
       {
         "virtualPath": "GestionIncidencias.Web.wasm",
-        "name": "GestionIncidencias.Web.s6ei9vfylm.wasm",
-        "integrity": "sha256-rPLO98hJCX+/bxjpm/J3WVTEEp1ioNxtwK/bQ2Ik4yc=",
+        "name": "GestionIncidencias.Web.ydbwnhbyk0.wasm",
+        "integrity": "sha256-powXWTphc7wuX9UvWkbDDoRst+/do2MwI25zpZJ5wpg=",
         "cache": "force-cache"
       }
     ],
     "pdb": [
       {
         "virtualPath": "GestionIncidencias.Bussiness.pdb",
-        "name": "GestionIncidencias.Bussiness.dmyi76csfp.pdb",
-        "integrity": "sha256-O4H4rs0aFi+Dci3zSFSpHkHhjfi9SxvQHRpNjB+/7Xw=",
+        "name": "GestionIncidencias.Bussiness.j4gzkynl14.pdb",
+        "integrity": "sha256-nbdlczPBKiOM9c7GhcUS9lYHtdyJbzsYbqpDq+lxJfY=",
         "cache": "force-cache"
       },
       {
         "virtualPath": "GestionIncidencias.Domain.pdb",
-        "name": "GestionIncidencias.Domain.n5lzniowwy.pdb",
-        "integrity": "sha256-29TPghqvjlAdEEs9feNCiU3/Ut0cOQLpOU6+pDz9OMA=",
+        "name": "GestionIncidencias.Domain.96tuhdgafl.pdb",
+        "integrity": "sha256-MXQ2h7mlbQZXAjpipDV0pcjgcKeTqH2EO728k4CxhFE=",
         "cache": "force-cache"
       },
       {
         "virtualPath": "GestionIncidencias.Infraestructure.pdb",
-        "name": "GestionIncidencias.Infraestructure.dbwcau6dpa.pdb",
-        "integrity": "sha256-Z69y9C1qoX+DSYjcBwlqvgoDBVrqDiZxG5xZd4ILeXI=",
+        "name": "GestionIncidencias.Infraestructure.cnn88dkedb.pdb",
+        "integrity": "sha256-uEUrjOw/bsgIRZ8LRR+3UJJG2KsJ1IvN301ninYaq9k=",
         "cache": "force-cache"
       },
       {
         "virtualPath": "GestionIncidencias.Web.pdb",
-        "name": "GestionIncidencias.Web.qimrtf5qq1.pdb",
-        "integrity": "sha256-wlMm9GjbryN9OA9qOYjJf202sHl+b7Km+Kq2Ka3gn1Y=",
+        "name": "GestionIncidencias.Web.cmk14kdmsr.pdb",
+        "integrity": "sha256-XD1+sinQXwSKC32ZMbIxmiaW7KHqUm2RwfmvubFfmzw=",
         "cache": "force-cache"
       }
     ],

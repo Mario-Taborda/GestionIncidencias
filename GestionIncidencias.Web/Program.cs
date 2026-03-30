@@ -1,7 +1,8 @@
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using MudBlazor.Services;
-
+using GestionIncidencias.Web.Auth;
+using Microsoft.AspNetCore.Components.Authorization;
 
 namespace GestionIncidencias.Web
 {
@@ -18,6 +19,8 @@ namespace GestionIncidencias.Web
             {
                 BaseAddress = new Uri("https://localhost:7013/")
             });
+            builder.Services.AddAuthorizationCore();
+            builder.Services.AddScoped<AuthenticationStateProvider, CustomAuthStateProvider>();
             await builder.Build().RunAsync();
         }
     }

@@ -1,0 +1,11 @@
+﻿@inject NavigationManager Navigation
+
+<p class="text-center mt-5 text-muted">Redirigiendo a la pantalla de seguridad...</p>
+
+@code {
+    protected override void OnInitialized()
+    {
+        // Te envía al login de forma automática e inmediata
+        Navigation.NavigateTo("/login");
+    }
+}

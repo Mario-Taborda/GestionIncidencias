@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GestionIncidencias.Infraestructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20260318032516_InitialDb")]
+    [Migration("20260330021437_InitialDb")]
     partial class InitialDb
     {
         /// <inheritdoc />
@@ -206,6 +206,9 @@ namespace GestionIncidencias.Infraestructure.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<bool>("Activo")
+                        .HasColumnType("bit");
+
                     b.Property<string>("Apellido")
                         .IsRequired()
                         .HasMaxLength(50)
@@ -229,6 +232,10 @@ namespace GestionIncidencias.Infraestructure.Migrations
                         .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("PasswordHash")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 

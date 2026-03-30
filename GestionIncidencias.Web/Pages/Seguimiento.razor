@@ -20,7 +20,7 @@
                          @bind-Value="IncidenciaSeleccionada"
                          SearchFunc="@BuscarTicketsGlobal"
                          ToStringFunc="@(e => e==null ? null : $"Ticket #{e.Id} | Estado: {e.Estado} | Reporta: {e.NombreUsuario} | Fecha: {Convert.ToDateTime(e.FechaIncidencia).ToString("dd/MMM/yyyy")}")"
-                         Placeholder="Ej: 14, Abierto, Juan, 20/mar..."
+                         Placeholder="Numero Ticket"
                          Variant="Variant.Outlined" 
                          Margin="Margin.Dense"
                          Style="width: 500px; background-color: white;"

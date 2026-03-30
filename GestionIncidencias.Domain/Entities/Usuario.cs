@@ -12,5 +12,7 @@ namespace GestionIncidencias.Domain.Entities
         public string Email { get; set; } = string.Empty;
         public string Area { get; set; } = string.Empty;
         public int IdUsuario { get; set; }
+        public string PasswordHash { get; set; } = string.Empty;
+        public bool Activo { get; set; } = true;
     }
 }

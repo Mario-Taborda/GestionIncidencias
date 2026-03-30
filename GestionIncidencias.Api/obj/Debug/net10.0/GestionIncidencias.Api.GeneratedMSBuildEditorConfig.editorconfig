@@ -29,3 +29,7 @@ build_property.MSBuildProjectDirectory = C:\Users\LENOVO\source\repos\GestionInc
 build_property._RazorSourceGeneratorDebug = 
 build_property.EffectiveAnalysisLevelStyle = 10.0
 build_property.EnableCodeStyleSeverity = 
+
+[C:/Users/LENOVO/source/repos/GestionIncidencias/GestionIncidencias.Api/Controllers/RedirectToLogin.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29udHJvbGxlcnNcUmVkaXJlY3RUb0xvZ2luLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 

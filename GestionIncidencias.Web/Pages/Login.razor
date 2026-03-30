@@ -1,0 +1,47 @@
+﻿@page "/login"
+@using GestionIncidencias.Domain.DTO
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-sm">
+                <div class="card-header bg-primary text-white text-center">
+                    <h4>Ingreso de Usuarios</h4>
+                </div>
+                <div class="card-body">
+
+                    <EditForm Model="loginModel" OnValidSubmit="ProcesarLogin">
+                        <DataAnnotationsValidator />
+
+                        <div class="mb-3">
+                            <label class="form-label">Correo Electrónico</label>
+                            <InputText @bind-Value="loginModel.Email" class="form-control" placeholder="ejemplo@empresa.com" />
+                            <ValidationMessage For="@(() => loginModel.Email)" class="text-danger" />
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Contraseña</label>
+                            <InputText @bind-Value="loginModel.Password" type="password" class="form-control" placeholder="******" />
+                            <ValidationMessage For="@(() => loginModel.Password)" class="text-danger" />
+                        </div>
+
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
+                        </div>
+
+                    </EditForm>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    private LoginDTO loginModel = new LoginDTO();
+
+    private void ProcesarLogin()
+    {
+        Console.WriteLine($"Intentando iniciar sesión con el correo: {loginModel.Email}");
+    }
+}
