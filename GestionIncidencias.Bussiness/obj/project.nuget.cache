@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "cK2fi83mNqg=",
+  "dgSpecHash": "aZvo/A08E+4=",
   "success": true,
   "projectFilePath": "C:\\Users\\LENOVO\\source\\repos\\GestionIncidencias\\GestionIncidencias.Bussiness\\GestionIncidencias.Bussiness.csproj",
   "expectedPackageFiles": [
@@ -8,6 +8,7 @@
     "C:\\Users\\LENOVO\\.nuget\\packages\\automapper.attributes\\6.0.1\\automapper.attributes.6.0.1.nupkg.sha512",
     "C:\\Users\\LENOVO\\.nuget\\packages\\azure.core\\1.47.1\\azure.core.1.47.1.nupkg.sha512",
     "C:\\Users\\LENOVO\\.nuget\\packages\\azure.identity\\1.14.2\\azure.identity.1.14.2.nupkg.sha512",
+    "C:\\Users\\LENOVO\\.nuget\\packages\\bcrypt.net-next\\4.1.0\\bcrypt.net-next.4.1.0.nupkg.sha512",
     "C:\\Users\\LENOVO\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\8.0.0\\microsoft.bcl.asyncinterfaces.8.0.0.nupkg.sha512",
     "C:\\Users\\LENOVO\\.nuget\\packages\\microsoft.bcl.cryptography\\9.0.4\\microsoft.bcl.cryptography.9.0.4.nupkg.sha512",
     "C:\\Users\\LENOVO\\.nuget\\packages\\microsoft.data.sqlclient\\6.1.1\\microsoft.data.sqlclient.6.1.1.nupkg.sha512",

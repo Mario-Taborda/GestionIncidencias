@@ -16,6 +16,22 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "GestionIncidencias.Api.Controllers.AuthController",
+    "Method": "Registrar",
+    "RelativePath": "api/Auth/registro",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "registroDto",
+        "Type": "GestionIncidencias.Domain.DTO.RegistroDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "GestionIncidencias.Api.Controllers.EncargadoController",
     "Method": "GetEncargado",
     "RelativePath": "api/Encargado",

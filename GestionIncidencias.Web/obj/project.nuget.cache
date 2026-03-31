@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "VYvY+8BuFnk=",
+  "dgSpecHash": "5niavXq93OI=",
   "success": true,
   "projectFilePath": "C:\\Users\\LENOVO\\source\\repos\\GestionIncidencias\\GestionIncidencias.Web\\GestionIncidencias.Web.csproj",
   "expectedPackageFiles": [
@@ -8,6 +8,7 @@
     "C:\\Users\\LENOVO\\.nuget\\packages\\automapper.attributes\\6.0.1\\automapper.attributes.6.0.1.nupkg.sha512",
     "C:\\Users\\LENOVO\\.nuget\\packages\\azure.core\\1.47.1\\azure.core.1.47.1.nupkg.sha512",
     "C:\\Users\\LENOVO\\.nuget\\packages\\azure.identity\\1.14.2\\azure.identity.1.14.2.nupkg.sha512",
+    "C:\\Users\\LENOVO\\.nuget\\packages\\bcrypt.net-next\\4.1.0\\bcrypt.net-next.4.1.0.nupkg.sha512",
     "C:\\Users\\LENOVO\\.nuget\\packages\\microsoft.aspnetcore.app.internal.assets\\10.0.3\\microsoft.aspnetcore.app.internal.assets.10.0.3.nupkg.sha512",
     "C:\\Users\\LENOVO\\.nuget\\packages\\microsoft.aspnetcore.authorization\\10.0.5\\microsoft.aspnetcore.authorization.10.0.5.nupkg.sha512",
     "C:\\Users\\LENOVO\\.nuget\\packages\\microsoft.aspnetcore.components\\10.0.5\\microsoft.aspnetcore.components.10.0.5.nupkg.sha512",

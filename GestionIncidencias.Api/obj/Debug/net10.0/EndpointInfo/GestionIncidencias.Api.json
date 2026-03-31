@@ -36,6 +36,37 @@
         }
       }
     },
+    "/api/Auth/registro": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegistroDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegistroDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegistroDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Encargado": {
       "get": {
         "tags": [
@@ -1382,6 +1413,40 @@
         },
         "additionalProperties": { }
       },
+      "RegistroDTO": {
+        "required": [
+          "apellido",
+          "area",
+          "email",
+          "nombre",
+          "password"
+        ],
+        "type": "object",
+        "properties": {
+          "nombre": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "apellido": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "area": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "email": {
+            "minLength": 1,
+            "type": "string",
+            "format": "email"
+          },
+          "password": {
+            "minLength": 6,
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
       "Solicitud": {
         "enum": [
           "NoAsignada",
@@ -1689,6 +1754,13 @@
           "idUsuario": {
             "type": "integer",
             "format": "int32"
+          },
+          "passwordHash": {
+            "type": "string",
+            "nullable": true
+          },
+          "activo": {
+            "type": "boolean"
           }
         },
         "additionalProperties": false

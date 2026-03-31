@@ -5,7 +5,7 @@ var e=!1;const t=async()=>WebAssembly.validate(new Uint8Array([0,97,115,109,1,0,
   "mainAssemblyName": "GestionIncidencias.Web",
   "applicationEnvironment": "Development",
   "resources": {
-    "hash": "sha256-YosOFgQuTRaneJ8VsbtQg4xZCJShqfPH81LdzLTEhl0=",
+    "hash": "sha256-QFi165zgrCuM4DD5JTjhBJ+43IO8elpTbAQFUsuB7do=",
     "jsModuleNative": [
       {
         "name": "dotnet.native.69poregybn.js"
@@ -80,6 +80,12 @@ var e=!1;const t=async()=>WebAssembly.validate(new Uint8Array([0,97,115,109,1,0,
         "virtualPath": "Azure.Identity.wasm",
         "name": "Azure.Identity.q3kp98qd6v.wasm",
         "integrity": "sha256-+iQf3yduYHqsIbO5lcB9t6jQxHAjKTlfWKHrm/nJn1U=",
+        "cache": "force-cache"
+      },
+      {
+        "virtualPath": "BCrypt.Net-Next.wasm",
+        "name": "BCrypt.Net-Next.q8vpemcar4.wasm",
+        "integrity": "sha256-lm8OnqeLaieceeTvLvUcNNBimZtHhYYHLPKKFecKiBE=",
         "cache": "force-cache"
       },
       {
@@ -1440,52 +1446,52 @@ var e=!1;const t=async()=>WebAssembly.validate(new Uint8Array([0,97,115,109,1,0,
       },
       {
         "virtualPath": "GestionIncidencias.Bussiness.wasm",
-        "name": "GestionIncidencias.Bussiness.z3ous28rxg.wasm",
-        "integrity": "sha256-j/nC8JYMBy02k8yJS4KfiR9zSrMvgxgG6jMSVSCzrTE=",
+        "name": "GestionIncidencias.Bussiness.hg7rxsye7v.wasm",
+        "integrity": "sha256-f1DKE3b0vUXETTUiOFGnkUx8b1NGFBz6ZKp1vEyTzEo=",
         "cache": "force-cache"
       },
       {
         "virtualPath": "GestionIncidencias.Domain.wasm",
-        "name": "GestionIncidencias.Domain.s9d1v6hehk.wasm",
-        "integrity": "sha256-cOBTaR5KN3s+w8hjrUOuWvsqVa28QU2VK7WJhkogfyE=",
+        "name": "GestionIncidencias.Domain.70hyi028ud.wasm",
+        "integrity": "sha256-aQMIBH2vmnapWK2uifrDRAjHfBynBsTG0ivLLtiuafc=",
         "cache": "force-cache"
       },
       {
         "virtualPath": "GestionIncidencias.Infraestructure.wasm",
-        "name": "GestionIncidencias.Infraestructure.eqalcq7zp1.wasm",
-        "integrity": "sha256-lo3QsvqqPpMNmDcZ2+z2pKdbLSIpA/9gLHuXlqWddko=",
+        "name": "GestionIncidencias.Infraestructure.tno1rkg67c.wasm",
+        "integrity": "sha256-54HIMocQk7vCwSx086U7D32maq+wKTEQrRem7wxAyFo=",
         "cache": "force-cache"
       },
       {
         "virtualPath": "GestionIncidencias.Web.wasm",
-        "name": "GestionIncidencias.Web.ydbwnhbyk0.wasm",
-        "integrity": "sha256-powXWTphc7wuX9UvWkbDDoRst+/do2MwI25zpZJ5wpg=",
+        "name": "GestionIncidencias.Web.xqak30fy2a.wasm",
+        "integrity": "sha256-aca72kJ73DRbhI9BTAZB/+WTI9q7OgOk4q7/vgYW3uE=",
         "cache": "force-cache"
       }
     ],
     "pdb": [
       {
         "virtualPath": "GestionIncidencias.Bussiness.pdb",
-        "name": "GestionIncidencias.Bussiness.j4gzkynl14.pdb",
-        "integrity": "sha256-nbdlczPBKiOM9c7GhcUS9lYHtdyJbzsYbqpDq+lxJfY=",
+        "name": "GestionIncidencias.Bussiness.3n62lrrsfd.pdb",
+        "integrity": "sha256-4UA84uPqWweglLSe3WYXWWrqgfBOSnIwW2JU4SfG6i0=",
         "cache": "force-cache"
       },
       {
         "virtualPath": "GestionIncidencias.Domain.pdb",
-        "name": "GestionIncidencias.Domain.96tuhdgafl.pdb",
-        "integrity": "sha256-MXQ2h7mlbQZXAjpipDV0pcjgcKeTqH2EO728k4CxhFE=",
+        "name": "GestionIncidencias.Domain.efwl85479w.pdb",
+        "integrity": "sha256-atOqqSrcpGNI7vErB5NUxXaAF6eJSF/Y7TjwXdla1nw=",
         "cache": "force-cache"
       },
       {
         "virtualPath": "GestionIncidencias.Infraestructure.pdb",
-        "name": "GestionIncidencias.Infraestructure.cnn88dkedb.pdb",
-        "integrity": "sha256-uEUrjOw/bsgIRZ8LRR+3UJJG2KsJ1IvN301ninYaq9k=",
+        "name": "GestionIncidencias.Infraestructure.6txfi6e4ue.pdb",
+        "integrity": "sha256-6mJav7cirfk1Jdpn2Mc5wEVAMBZY6oCm1IqsPR7rdSM=",
         "cache": "force-cache"
       },
       {
         "virtualPath": "GestionIncidencias.Web.pdb",
-        "name": "GestionIncidencias.Web.cmk14kdmsr.pdb",
-        "integrity": "sha256-XD1+sinQXwSKC32ZMbIxmiaW7KHqUm2RwfmvubFfmzw=",
+        "name": "GestionIncidencias.Web.cr1rpt0gfp.pdb",
+        "integrity": "sha256-WHHg4arx1N3ieLlEVvxnyVZghUz5K6YpXHALHfa7yIY=",
         "cache": "force-cache"
       }
     ],

@@ -64,6 +64,10 @@
             "AutoMapper.Attributes": {
               "target": "Package",
               "version": "[6.0.1, )"
+            },
+            "BCrypt.Net-Next": {
+              "target": "Package",
+              "version": "[4.1.0, )"
             }
           },
           "imports": [

@@ -12,5 +12,6 @@ namespace GestionIncidencias.Bussiness.Interfaces
         Task<List<UsuarioResponsesDto>> GetAllUsuarioAsync();
         Task<UsuarioResponsesDto> CreateUsuarioAsync(UsuarioDto usuarioDto);
         Task UpdateUsuarioAsync(UpdateUsuarioDto updateusuarioDto);
+        Task<bool> ValidarCredencialesAsync(string email, string password);
     }
 }

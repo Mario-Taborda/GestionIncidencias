@@ -3,32 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\LENOVO\\source\\repos\\GestionIncidencias\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{6D5A4614-5508-A370-1B06-C027FC21CAE6}|GestionIncidencias.Web\\GestionIncidencias.Web.csproj|c:\\users\\lenovo\\source\\repos\\gestionincidencias\\gestionincidencias.web\\pages\\redirecttologin.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{6D5A4614-5508-A370-1B06-C027FC21CAE6}|GestionIncidencias.Web\\GestionIncidencias.Web.csproj|solutionrelative:gestionincidencias.web\\pages\\redirecttologin.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6D5A4614-5508-A370-1B06-C027FC21CAE6}|GestionIncidencias.Web\\GestionIncidencias.Web.csproj|c:\\users\\lenovo\\source\\repos\\gestionincidencias\\gestionincidencias.web\\_imports.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{6D5A4614-5508-A370-1B06-C027FC21CAE6}|GestionIncidencias.Web\\GestionIncidencias.Web.csproj|solutionrelative:gestionincidencias.web\\_imports.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6D5A4614-5508-A370-1B06-C027FC21CAE6}|GestionIncidencias.Web\\GestionIncidencias.Web.csproj|c:\\users\\lenovo\\source\\repos\\gestionincidencias\\gestionincidencias.web\\pages\\atencionincidencia.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{6D5A4614-5508-A370-1B06-C027FC21CAE6}|GestionIncidencias.Web\\GestionIncidencias.Web.csproj|solutionrelative:gestionincidencias.web\\pages\\atencionincidencia.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{6D5A4614-5508-A370-1B06-C027FC21CAE6}|GestionIncidencias.Web\\GestionIncidencias.Web.csproj|c:\\users\\lenovo\\source\\repos\\gestionincidencias\\gestionincidencias.web\\service\\auth.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6D5A4614-5508-A370-1B06-C027FC21CAE6}|GestionIncidencias.Web\\GestionIncidencias.Web.csproj|solutionrelative:gestionincidencias.web\\service\\auth.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{6D5A4614-5508-A370-1B06-C027FC21CAE6}|GestionIncidencias.Web\\GestionIncidencias.Web.csproj|c:\\users\\lenovo\\source\\repos\\gestionincidencias\\gestionincidencias.web\\pages\\login.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{6D5A4614-5508-A370-1B06-C027FC21CAE6}|GestionIncidencias.Web\\GestionIncidencias.Web.csproj|solutionrelative:gestionincidencias.web\\pages\\login.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6D5A4614-5508-A370-1B06-C027FC21CAE6}|GestionIncidencias.Web\\GestionIncidencias.Web.csproj|c:\\users\\lenovo\\source\\repos\\gestionincidencias\\gestionincidencias.web\\app.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{6D5A4614-5508-A370-1B06-C027FC21CAE6}|GestionIncidencias.Web\\GestionIncidencias.Web.csproj|solutionrelative:gestionincidencias.web\\app.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6D5A4614-5508-A370-1B06-C027FC21CAE6}|GestionIncidencias.Web\\GestionIncidencias.Web.csproj|c:\\users\\lenovo\\source\\repos\\gestionincidencias\\gestionincidencias.web\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6D5A4614-5508-A370-1B06-C027FC21CAE6}|GestionIncidencias.Web\\GestionIncidencias.Web.csproj|solutionrelative:gestionincidencias.web\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6D5A4614-5508-A370-1B06-C027FC21CAE6}|GestionIncidencias.Web\\GestionIncidencias.Web.csproj|c:\\users\\lenovo\\source\\repos\\gestionincidencias\\gestionincidencias.web\\pages\\incidencia.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{6D5A4614-5508-A370-1B06-C027FC21CAE6}|GestionIncidencias.Web\\GestionIncidencias.Web.csproj|solutionrelative:gestionincidencias.web\\pages\\incidencia.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{88C3E7EF-4DD3-7865-F7FD-164F521D511B}|GestionIncidencias.Api\\GestionIncidencias.Api.csproj|c:\\users\\lenovo\\source\\repos\\gestionincidencias\\gestionincidencias.api\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{88C3E7EF-4DD3-7865-F7FD-164F521D511B}|GestionIncidencias.Api\\GestionIncidencias.Api.csproj|solutionrelative:gestionincidencias.api\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -55,92 +39,40 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "RedirectToLogin.razor",
-              "DocumentMoniker": "C:\\Users\\LENOVO\\source\\repos\\GestionIncidencias\\GestionIncidencias.Web\\Pages\\RedirectToLogin.razor",
-              "RelativeDocumentMoniker": "GestionIncidencias.Web\\Pages\\RedirectToLogin.razor",
-              "ToolTip": "C:\\Users\\LENOVO\\source\\repos\\GestionIncidencias\\GestionIncidencias.Web\\Pages\\RedirectToLogin.razor*",
-              "RelativeToolTip": "GestionIncidencias.Web\\Pages\\RedirectToLogin.razor*",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-03-30T03:19:25.792Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "AtencionIncidencia.razor",
-              "DocumentMoniker": "C:\\Users\\LENOVO\\source\\repos\\GestionIncidencias\\GestionIncidencias.Web\\Pages\\AtencionIncidencia.razor",
-              "RelativeDocumentMoniker": "GestionIncidencias.Web\\Pages\\AtencionIncidencia.razor",
-              "ToolTip": "C:\\Users\\LENOVO\\source\\repos\\GestionIncidencias\\GestionIncidencias.Web\\Pages\\AtencionIncidencia.razor",
-              "RelativeToolTip": "GestionIncidencias.Web\\Pages\\AtencionIncidencia.razor",
-              "ViewState": "AgIAAEUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-03-30T03:18:49.5Z",
+              "Title": "Auth.cs",
+              "DocumentMoniker": "C:\\Users\\LENOVO\\source\\repos\\GestionIncidencias\\GestionIncidencias.Web\\Service\\Auth.cs",
+              "RelativeDocumentMoniker": "GestionIncidencias.Web\\Service\\Auth.cs",
+              "ToolTip": "C:\\Users\\LENOVO\\source\\repos\\GestionIncidencias\\GestionIncidencias.Web\\Service\\Auth.cs",
+              "RelativeToolTip": "GestionIncidencias.Web\\Service\\Auth.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAABbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-31T03:23:10.079Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "_Imports.razor",
-              "DocumentMoniker": "C:\\Users\\LENOVO\\source\\repos\\GestionIncidencias\\GestionIncidencias.Web\\_Imports.razor",
-              "RelativeDocumentMoniker": "GestionIncidencias.Web\\_Imports.razor",
-              "ToolTip": "C:\\Users\\LENOVO\\source\\repos\\GestionIncidencias\\GestionIncidencias.Web\\_Imports.razor",
-              "RelativeToolTip": "GestionIncidencias.Web\\_Imports.razor",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-03-30T03:17:09.206Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
               "Title": "Login.razor",
               "DocumentMoniker": "C:\\Users\\LENOVO\\source\\repos\\GestionIncidencias\\GestionIncidencias.Web\\Pages\\Login.razor",
               "RelativeDocumentMoniker": "GestionIncidencias.Web\\Pages\\Login.razor",
               "ToolTip": "C:\\Users\\LENOVO\\source\\repos\\GestionIncidencias\\GestionIncidencias.Web\\Pages\\Login.razor",
               "RelativeToolTip": "GestionIncidencias.Web\\Pages\\Login.razor",
-              "ViewState": "AgIAABAAAAAAAAAAAAAgwC4AAAABAAAAAAAAAA==",
+              "ViewState": "AgIAACgAAAAAAAAAAAAswE8AAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-03-30T03:17:00.226Z",
+              "WhenOpened": "2026-03-31T03:20:35.777Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "App.razor",
-              "DocumentMoniker": "C:\\Users\\LENOVO\\source\\repos\\GestionIncidencias\\GestionIncidencias.Web\\App.razor",
-              "RelativeDocumentMoniker": "GestionIncidencias.Web\\App.razor",
-              "ToolTip": "C:\\Users\\LENOVO\\source\\repos\\GestionIncidencias\\GestionIncidencias.Web\\App.razor",
-              "RelativeToolTip": "GestionIncidencias.Web\\App.razor",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAfAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-03-30T03:16:49.949Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Incidencia.razor",
-              "DocumentMoniker": "C:\\Users\\LENOVO\\source\\repos\\GestionIncidencias\\GestionIncidencias.Web\\Pages\\Incidencia.razor",
-              "RelativeDocumentMoniker": "GestionIncidencias.Web\\Pages\\Incidencia.razor",
-              "ToolTip": "C:\\Users\\LENOVO\\source\\repos\\GestionIncidencias\\GestionIncidencias.Web\\Pages\\Incidencia.razor",
-              "RelativeToolTip": "GestionIncidencias.Web\\Pages\\Incidencia.razor",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-03-30T03:06:52.528Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\LENOVO\\source\\repos\\GestionIncidencias\\GestionIncidencias.Web\\Program.cs",
-              "RelativeDocumentMoniker": "GestionIncidencias.Web\\Program.cs",
-              "ToolTip": "C:\\Users\\LENOVO\\source\\repos\\GestionIncidencias\\GestionIncidencias.Web\\Program.cs",
-              "RelativeToolTip": "GestionIncidencias.Web\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAgAAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "C:\\Users\\LENOVO\\source\\repos\\GestionIncidencias\\GestionIncidencias.Api\\Controllers\\AuthController.cs",
+              "RelativeDocumentMoniker": "GestionIncidencias.Api\\Controllers\\AuthController.cs",
+              "ToolTip": "C:\\Users\\LENOVO\\source\\repos\\GestionIncidencias\\GestionIncidencias.Api\\Controllers\\AuthController.cs",
+              "RelativeToolTip": "GestionIncidencias.Api\\Controllers\\AuthController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-30T02:47:48.867Z",
+              "WhenOpened": "2026-03-31T03:14:06.742Z",
               "EditorCaption": ""
             }
           ]

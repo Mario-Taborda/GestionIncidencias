@@ -1,0 +1,90 @@
+﻿@page "/registro"
+@using GestionIncidencias.Domain.DTO
+@inject NavigationManager Navigation
+@inject HttpClient Http
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-sm">
+                <div class="card-header bg-success text-white text-center">
+                    <h4>Registro de Nuevo Empleado</h4>
+                </div>
+                <div class="card-body">
+
+                    <EditForm Model="registroModel" OnValidSubmit="ProcesarRegistro">
+                        <DataAnnotationsValidator />
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Nombre</label>
+                                <InputText @bind-Value="registroModel.Nombre" class="form-control" placeholder="Ej. Juan" />
+                                <ValidationMessage For="@(() => registroModel.Nombre)" class="text-danger" />
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Apellido</label>
+                                <InputText @bind-Value="registroModel.Apellido" class="form-control" placeholder="Ej. Pérez" />
+                                <ValidationMessage For="@(() => registroModel.Apellido)" class="text-danger" />
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Área de Trabajo</label>
+                            <InputText @bind-Value="registroModel.Area" class="form-control" placeholder="Ej. Sistemas, Recursos Humanos..." />
+                            <ValidationMessage For="@(() => registroModel.Area)" class="text-danger" />
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Correo Electrónico</label>
+                            <InputText @bind-Value="registroModel.Email" class="form-control" placeholder="juan.perez@empresa.com" />
+                            <ValidationMessage For="@(() => registroModel.Email)" class="text-danger" />
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="form-label">Contraseña</label>
+                            <InputText @bind-Value="registroModel.Password" type="password" class="form-control" placeholder="Mínimo 6 caracteres" />
+                            <ValidationMessage For="@(() => registroModel.Password)" class="text-danger" />
+                        </div>
+
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-success">Crear Cuenta</button>
+                            <button type="button" class="btn btn-link" @onclick="IrALogin">Ya tengo cuenta, ir al Login</button>
+                        </div>
+
+                    </EditForm>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    private RegistroDTO registroModel = new RegistroDTO();
+
+    private async Task ProcesarRegistro()
+    {
+        Console.WriteLine("Enviando datos a la API...");
+
+        // Usamos el "cable" HttpClient para enviar un POST a la URL de tu API
+        var respuesta = await Http.PostAsJsonAsync("api/auth/registro", registroModel);
+
+        if (respuesta.IsSuccessStatusCode)
+        {
+            Console.WriteLine("¡Registro exitoso!");
+            // Si el servidor responde OK, enviamos al usuario al Login para que ingrese
+            Navigation.NavigateTo("/login");
+        }
+        else
+        {
+            // Si hay un error, lo mostramos en consola
+            Console.WriteLine("Hubo un error al registrar el usuario en el servidor.");
+        }
+    }
+
+    private void IrALogin()
+    {
+        Navigation.NavigateTo("/login");
+    }
+}

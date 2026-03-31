@@ -1,5 +1,10 @@
 ﻿@page "/login"
 @using GestionIncidencias.Domain.DTO
+@using GestionIncidencias.Web.Auth
+@using Microsoft.AspNetCore.Components.Authorization
+@inject AuthenticationStateProvider AuthStateProvider
+@inject NavigationManager Navigation
+@inject HttpClient Http
 
 <div class="container mt-5">
     <div class="row justify-content-center">
@@ -38,10 +43,35 @@
 </div>
 
 @code {
-    private LoginDTO loginModel = new LoginDTO();
+    @code {
+        private LoginDTO loginModel = new LoginDTO();
+        private string mensajeError = "";
 
-    private void ProcesarLogin()
-    {
-        Console.WriteLine($"Intentando iniciar sesión con el correo: {loginModel.Email}");
+        private async Task ProcesarLogin()
+        {
+            mensajeError = "";
+
+            try
+            {
+                var respuesta = await Http.PostAsJsonAsync("api/auth/login", loginModel);
+
+                if (respuesta.IsSuccessStatusCode)
+                {
+             
+                    var customProvider = (CustomAuthStateProvider)AuthStateProvider;
+                    customProvider.MarcarUsuarioComoLogueado(loginModel.Email);
+                    Navigation.NavigateTo("/incidencia");
+                }
+                else
+                {
+            
+                    mensajeError = "Correo o contraseña incorrectos. Verifica tus datos.";
+                }
+            }
+            catch (Exception)
+            {
+                mensajeError = "No se pudo conectar con el servidor. Intenta de nuevo.";
+            }
+        }
     }
 }

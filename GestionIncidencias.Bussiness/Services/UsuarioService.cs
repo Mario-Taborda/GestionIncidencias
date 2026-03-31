@@ -38,5 +38,18 @@ namespace GestionIncidencias.Bussiness.Services
             var usuario = _mapper.Map<Usuario>(updateusuarioDto);
             await _usuarioRepository.UpdateAsync(usuario);
         }
+        public async Task<bool> ValidarCredencialesAsync(string email, string password)
+        {
+            var todosLosUsuarios = await _usuarioRepository.GetAllAsync();
+            var usuario = todosLosUsuarios.FirstOrDefault(u => u.Email == email);
+
+            if (usuario == null || !usuario.Activo)
+            {
+                return false;
+            }
+            bool claveCorrecta = BCrypt.Net.BCrypt.Verify(password, usuario.PasswordHash);
+
+            return claveCorrecta;
+        }
     }
 }
