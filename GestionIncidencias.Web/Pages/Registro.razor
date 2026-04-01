@@ -3,57 +3,64 @@
 @inject NavigationManager Navigation
 @inject HttpClient Http
 
-<div class="container mt-5">
+<div class="container mt-5 mb-5">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card shadow-sm">
-                <div class="card-header bg-success text-white text-center">
-                    <h4>Registro de Nuevo Empleado</h4>
+            <div class="card shadow-lg border-0" style="border-radius: 1rem; overflow: hidden;">
+                <div class="card-header text-white text-center py-4" style="background: linear-gradient(135deg, #dc3545 0%, #a71d2a 100%); border-bottom: none;">
+                    <h3 class="mb-0 fw-bold"><i class="bi bi-person-badge me-2"></i>Registro de Nuevo Empleado</h3>
                 </div>
-                <div class="card-body">
 
+                <div class="card-body p-4 p-md-5 bg-light">
                     <EditForm Model="registroModel" OnValidSubmit="ProcesarRegistro">
                         <DataAnnotationsValidator />
 
-                        <div class="row">
-                            <div class="col-md-6 mb-3">
-                                <label class="form-label">Nombre</label>
-                                <InputText @bind-Value="registroModel.Nombre" class="form-control" placeholder="Ej. Juan" />
-                                <ValidationMessage For="@(() => registroModel.Nombre)" class="text-danger" />
+                        <div class="row g-3 mb-3">
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <InputText @bind-Value="registroModel.Nombre" class="form-control shadow-sm" id="nombre" placeholder="Nombre" />
+                                    <label for="nombre" class="text-muted">Nombre</label>
+                                    <ValidationMessage For="@(() => registroModel.Nombre)" class="text-danger small mt-1" />
+                                </div>
                             </div>
 
-                            <div class="col-md-6 mb-3">
-                                <label class="form-label">Apellido</label>
-                                <InputText @bind-Value="registroModel.Apellido" class="form-control" placeholder="Ej. Pérez" />
-                                <ValidationMessage For="@(() => registroModel.Apellido)" class="text-danger" />
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <InputText @bind-Value="registroModel.Apellido" class="form-control shadow-sm" id="apellido" placeholder="Apellido" />
+                                    <label for="apellido" class="text-muted">Apellido</label>
+                                    <ValidationMessage For="@(() => registroModel.Apellido)" class="text-danger small mt-1" />
+                                </div>
                             </div>
                         </div>
 
-                        <div class="mb-3">
-                            <label class="form-label">Área de Trabajo</label>
-                            <InputText @bind-Value="registroModel.Area" class="form-control" placeholder="Ej. Sistemas, Recursos Humanos..." />
-                            <ValidationMessage For="@(() => registroModel.Area)" class="text-danger" />
+                        <div class="form-floating mb-3">
+                            <InputText @bind-Value="registroModel.Area" class="form-control shadow-sm" id="area" placeholder="Área" />
+                            <label for="area" class="text-muted">Área de Trabajo (Ej. Sistemas, RRHH)</label>
+                            <ValidationMessage For="@(() => registroModel.Area)" class="text-danger small mt-1" />
                         </div>
 
-                        <div class="mb-3">
-                            <label class="form-label">Correo Electrónico</label>
-                            <InputText @bind-Value="registroModel.Email" class="form-control" placeholder="juan.perez@empresa.com" />
-                            <ValidationMessage For="@(() => registroModel.Email)" class="text-danger" />
+                        <div class="form-floating mb-3">
+                            <InputText @bind-Value="registroModel.Email" class="form-control shadow-sm" id="email" placeholder="Correo" />
+                            <label for="email" class="text-muted">Correo Electrónico</label>
+                            <ValidationMessage For="@(() => registroModel.Email)" class="text-danger small mt-1" />
                         </div>
 
-                        <div class="mb-4">
-                            <label class="form-label">Contraseña</label>
-                            <InputText @bind-Value="registroModel.Password" type="password" class="form-control" placeholder="Mínimo 6 caracteres" />
-                            <ValidationMessage For="@(() => registroModel.Password)" class="text-danger" />
+                        <div class="form-floating mb-4">
+                            <InputText @bind-Value="registroModel.Password" type="password" class="form-control shadow-sm" id="password" placeholder="Clave" />
+                            <label for="password" class="text-muted">Contraseña (Mínimo 6 caracteres)</label>
+                            <ValidationMessage For="@(() => registroModel.Password)" class="text-danger small mt-1" />
                         </div>
 
-                        <div class="d-grid gap-2">
-                            <button type="submit" class="btn btn-success">Crear Cuenta</button>
-                            <button type="button" class="btn btn-link" @onclick="IrALogin">Ya tengo cuenta, ir al Login</button>
+                        <div class="d-grid gap-3">
+                            <button type="submit" class="btn btn-danger btn-lg fw-bold shadow-sm" style="border-radius: 0.5rem;">
+                                <i class="bi bi-person-plus-fill me-2"></i>Crear Cuenta
+                            </button>
+                            <button type="button" class="btn btn-outline-secondary shadow-sm" style="border-radius: 0.5rem;" @onclick="IrALogin">
+                                Ya tengo cuenta, ir al Login
+                            </button>
                         </div>
 
                     </EditForm>
-
                 </div>
             </div>
         </div>
@@ -65,21 +72,11 @@
 
     private async Task ProcesarRegistro()
     {
-        Console.WriteLine("Enviando datos a la API...");
-
-        // Usamos el "cable" HttpClient para enviar un POST a la URL de tu API
         var respuesta = await Http.PostAsJsonAsync("api/auth/registro", registroModel);
 
         if (respuesta.IsSuccessStatusCode)
         {
-            Console.WriteLine("¡Registro exitoso!");
-            // Si el servidor responde OK, enviamos al usuario al Login para que ingrese
             Navigation.NavigateTo("/login");
-        }
-        else
-        {
-            // Si hay un error, lo mostramos en consola
-            Console.WriteLine("Hubo un error al registrar el usuario en el servidor.");
         }
     }
 

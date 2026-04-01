@@ -353,3 +353,6 @@ C:\Users\LENOVO\source\repos\GestionIncidencias\GestionIncidencias.Api\obj\Debug
 C:\Users\LENOVO\source\repos\GestionIncidencias\GestionIncidencias.Api\obj\Debug\net10.0\GestionIncidencias.Api.genruntimeconfig.cache
 C:\Users\LENOVO\source\repos\GestionIncidencias\GestionIncidencias.Api\obj\Debug\net10.0\ref\GestionIncidencias.Api.dll
 C:\Users\LENOVO\source\repos\GestionIncidencias\GestionIncidencias.Api\bin\Debug\net10.0\BCrypt.Net-Next.dll
+C:\Users\LENOVO\source\repos\GestionIncidencias\GestionIncidencias.Api\bin\Debug\net10.0\BouncyCastle.Cryptography.dll
+C:\Users\LENOVO\source\repos\GestionIncidencias\GestionIncidencias.Api\bin\Debug\net10.0\MailKit.dll
+C:\Users\LENOVO\source\repos\GestionIncidencias\GestionIncidencias.Api\bin\Debug\net10.0\MimeKit.dll

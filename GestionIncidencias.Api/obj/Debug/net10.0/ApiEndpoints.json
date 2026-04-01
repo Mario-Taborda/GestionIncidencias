@@ -17,6 +17,22 @@
   },
   {
     "ContainingType": "GestionIncidencias.Api.Controllers.AuthController",
+    "Method": "RecuperarPassword",
+    "RelativePath": "api/Auth/recuperar",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "email",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GestionIncidencias.Api.Controllers.AuthController",
     "Method": "Registrar",
     "RelativePath": "api/Auth/registro",
     "HttpMethod": "POST",

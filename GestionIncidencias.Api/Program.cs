@@ -63,6 +63,8 @@ namespace GestionIncidencias.Api
             builder.Services.AddScoped<TipoSolucionService, TipoSolucionService>();
             builder.Services.AddScoped<TipoSolucionRepository>();
 
+            builder.Services.AddScoped<IEmailService, EmailService>();
+            
             builder.Services.AddSwaggerGen();
             builder.Services.AddEndpointsApiExplorer();
         

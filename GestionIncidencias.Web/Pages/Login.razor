@@ -8,34 +8,50 @@
 
 <div class="container mt-5">
     <div class="row justify-content-center">
-        <div class="col-md-6">
-            <div class="card shadow-sm">
-                <div class="card-header bg-primary text-white text-center">
-                    <h4>Ingreso de Usuarios</h4>
+        <div class="col-md-5">
+            <div class="card shadow-lg border-0" style="border-radius: 1rem; overflow: hidden;">
+                <div class="card-header text-white text-center py-4" style="background: linear-gradient(135deg, #dc3545 0%, #a71d2a 100%); border-bottom: none;">
+                    <h3 class="mb-0 fw-bold"><i class="bi bi-shield-lock me-2"></i>Ingreso al Sistema</h3>
                 </div>
-                <div class="card-body">
+
+                <div class="card-body p-4 p-md-5 bg-light">
+
+                    @if (!string.IsNullOrEmpty(mensajeError))
+                    {
+                        <div class="alert alert-danger d-flex align-items-center shadow-sm" style="border-radius: 0.5rem;" role="alert">
+                            <i class="bi bi-exclamation-triangle-fill me-3 fs-4"></i>
+                            <div>@mensajeError</div>
+                        </div>
+                    }
 
                     <EditForm Model="loginModel" OnValidSubmit="ProcesarLogin">
                         <DataAnnotationsValidator />
 
-                        <div class="mb-3">
-                            <label class="form-label">Correo Electrónico</label>
-                            <InputText @bind-Value="loginModel.Email" class="form-control" placeholder="ejemplo@empresa.com" />
-                            <ValidationMessage For="@(() => loginModel.Email)" class="text-danger" />
+                        <div class="form-floating mb-4">
+                            <InputText @bind-Value="loginModel.Email" class="form-control shadow-sm" id="loginEmail" placeholder="Correo" />
+                            <label for="loginEmail" class="text-muted"><i class="bi bi-envelope me-2"></i>Correo Electrónico</label>
+                            <ValidationMessage For="@(() => loginModel.Email)" class="text-danger small mt-1" />
                         </div>
 
-                        <div class="mb-3">
-                            <label class="form-label">Contraseña</label>
-                            <InputText @bind-Value="loginModel.Password" type="password" class="form-control" placeholder="******" />
-                            <ValidationMessage For="@(() => loginModel.Password)" class="text-danger" />
+                        <div class="form-floating mb-4">
+                            <InputText @bind-Value="loginModel.Password" type="password" class="form-control shadow-sm" id="loginPassword" placeholder="Clave" />
+                            <label for="loginPassword" class="text-muted"><i class="bi bi-key me-2"></i>Contraseña</label>
+                            <ValidationMessage For="@(() => loginModel.Password)" class="text-danger small mt-1" />
                         </div>
 
-                        <div class="d-grid gap-2">
-                            <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
+                        <div class="d-flex justify-content-end mb-4 mt-n2">
+                            <a href="/recuperar-password" class="text-decoration-none text-danger small fw-bold">
+                                ¿Olvidaste tu contraseña?
+                            </a>
+                        </div>
+
+                        <div class="d-grid mt-2">
+                            <button type="submit" class="btn btn-danger btn-lg fw-bold shadow-sm" style="border-radius: 0.5rem;">
+                                Iniciar Sesión <i class="bi bi-arrow-right-circle ms-2"></i>
+                            </button>
                         </div>
 
                     </EditForm>
-
                 </div>
             </div>
         </div>
@@ -43,35 +59,31 @@
 </div>
 
 @code {
-    @code {
-        private LoginDTO loginModel = new LoginDTO();
-        private string mensajeError = "";
+    private LoginDTO loginModel = new LoginDTO();
+    private string mensajeError = "";
 
-        private async Task ProcesarLogin()
+    private async Task ProcesarLogin()
+    {
+        mensajeError = "";
+
+        try
         {
-            mensajeError = "";
+            var respuesta = await Http.PostAsJsonAsync("api/auth/login", loginModel);
 
-            try
+            if (respuesta.IsSuccessStatusCode)
             {
-                var respuesta = await Http.PostAsJsonAsync("api/auth/login", loginModel);
-
-                if (respuesta.IsSuccessStatusCode)
-                {
-             
-                    var customProvider = (CustomAuthStateProvider)AuthStateProvider;
-                    customProvider.MarcarUsuarioComoLogueado(loginModel.Email);
-                    Navigation.NavigateTo("/incidencia");
-                }
-                else
-                {
-            
-                    mensajeError = "Correo o contraseña incorrectos. Verifica tus datos.";
-                }
+                var customProvider = (CustomAuthStateProvider)AuthStateProvider;
+                customProvider.MarcarUsuarioComoLogueado(loginModel.Email);
+                Navigation.NavigateTo("/incidencia");
             }
-            catch (Exception)
+            else
             {
-                mensajeError = "No se pudo conectar con el servidor. Intenta de nuevo.";
+                mensajeError = "Correo o contraseña incorrectos. Verifica tus datos.";
             }
+        }
+        catch (Exception)
+        {
+            mensajeError = "No se pudo conectar con el servidor. Intenta de nuevo.";
         }
     }
 }

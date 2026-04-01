@@ -1,0 +1,74 @@
+﻿@page "/recuperar-password"
+@inject NavigationManager Navigation
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-5">
+            <div class="card shadow-lg border-0" style="border-radius: 1rem; overflow: hidden;">
+
+                <div class="card-header text-white text-center py-4" style="background: linear-gradient(135deg, #495057 0%, #212529 100%); border-bottom: none;">
+                    <h3 class="mb-0 fw-bold"><i class="bi bi-key-fill me-2"></i>Recuperar Acceso</h3>
+                </div>
+
+                <div class="card-body p-4 p-md-5 bg-light">
+
+                    @if (correoEnviado)
+                    {
+                        <div class="alert alert-success d-flex align-items-center shadow-sm" style="border-radius: 0.5rem;" role="alert">
+                            <i class="bi bi-check-circle-fill me-3 fs-4"></i>
+                            <div>
+                                <strong>¡Instrucciones enviadas!</strong><br />
+                                Si el correo <b>@email</b> existe en nuestro sistema, recibirás un enlace seguro en los próximos minutos.
+                            </div>
+                        </div>
+
+                        <div class="d-grid mt-4">
+                            <button class="btn btn-outline-secondary fw-bold shadow-sm" @onclick="VolverAlLogin">
+                                Volver al Login
+                            </button>
+                        </div>
+                    }
+                    else
+                    {
+                        <p class="text-muted text-center mb-4">
+                            Ingresa tu correo corporativo y te enviaremos las instrucciones para restablecer tu contraseña.
+                        </p>
+
+                        <div class="form-floating mb-4">
+                            <input type="email" @bind="email" class="form-control shadow-sm" id="recuperarEmail" placeholder="Correo" />
+                            <label for="recuperarEmail" class="text-muted"><i class="bi bi-envelope me-2"></i>Correo Electrónico</label>
+                        </div>
+
+                        <div class="d-grid gap-3 mt-2">
+                            <button class="btn btn-dark btn-lg fw-bold shadow-sm" style="border-radius: 0.5rem;" @onclick="SimularEnvioCorreo">
+                                Enviar Instrucciones <i class="bi bi-send-fill ms-2"></i>
+                            </button>
+                            <button class="btn btn-link text-muted text-decoration-none" @onclick="VolverAlLogin">
+                                Cancelar y volver
+                            </button>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    private string email = "";
+    private bool correoEnviado = false;
+
+    private async Task SimularEnvioCorreo()
+    {
+        if (!string.IsNullOrWhiteSpace(email))
+        {
+            await Task.Delay(1500);
+            correoEnviado = true;
+        }
+    }
+
+    private void VolverAlLogin()
+    {
+        Navigation.NavigateTo("/login");
+    }
+}
