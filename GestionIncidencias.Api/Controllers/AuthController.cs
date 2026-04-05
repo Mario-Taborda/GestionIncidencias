@@ -6,12 +6,23 @@ using System.Threading.Tasks;
 
 namespace GestionIncidencias.Api.Controllers
 {
+    public class PeticionRecuperarDto
+    {
+        public string Email { get; set; } = string.Empty;
+    }
+    public class RestablecerPasswordDto
+    {
+        public string Email { get; set; } = string.Empty;
+        public string NuevaPassword { get; set; } = string.Empty;
+    }
+
     [Route("api/[controller]")]
     [ApiController]
     public class AuthController : ControllerBase
     {
         private readonly IUsuarioService _usuarioService;
         private readonly IEmailService _emailService;
+
         public AuthController(IUsuarioService usuarioService, IEmailService emailService)
         {
             _usuarioService = usuarioService;
@@ -69,10 +80,12 @@ namespace GestionIncidencias.Api.Controllers
                 return StatusCode(500, new { Mensaje = "Error al guardar el usuario", Detalle = ex.Message });
             }
         }
-
         [HttpPost("recuperar")]
-        public async Task<IActionResult> RecuperarPassword([FromBody] string email)
+        public async Task<IActionResult> RecuperarPassword([FromBody] PeticionRecuperarDto peticion)
         {
+
+            string email = peticion.Email;
+
             string asunto = "Recuperación de Acceso - Gestión de Incidencias";
             string mensajeHtml = $@"
             <div style='font-family: Arial; border: 1px solid #dee2e6; padding: 20px; border-radius: 10px;'>
@@ -91,6 +104,25 @@ namespace GestionIncidencias.Api.Controllers
             {
                 await _emailService.EnviarCorreoAsync(email, asunto, mensajeHtml);
                 return Ok(new { Mensaje = "Correo enviado exitosamente" });
+            }
+            catch (System.Exception ex)
+            {
+                return StatusCode(500, new { Error = ex.Message });
+            }
+        }
+
+        [HttpPut("restablecer-clave")]
+        public async Task<IActionResult> RestablecerClave([FromBody] RestablecerPasswordDto dto)
+        {
+            try
+            {
+                string passwordEncriptada = BCrypt.Net.BCrypt.HashPassword(dto.NuevaPassword);
+                bool exito = await _usuarioService.ActualizarPasswordAsync(dto.Email, passwordEncriptada);
+
+                if (exito)
+                    return Ok(new { Mensaje = "Contraseña actualizada exitosamente." });
+                else
+                    return NotFound(new { Mensaje = "No se encontró un usuario con ese correo." });
             }
             catch (System.Exception ex)
             {

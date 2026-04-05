@@ -5,7 +5,7 @@ var e=!1;const t=async()=>WebAssembly.validate(new Uint8Array([0,97,115,109,1,0,
   "mainAssemblyName": "GestionIncidencias.Web",
   "applicationEnvironment": "Development",
   "resources": {
-    "hash": "sha256-aoja8SbG1z34HJemzHuzXHwoU9UmJOJKt66/GfPIfRU=",
+    "hash": "sha256-swufrnjfaK6zeiHtLPK7IOWgjnh6+8zQ444xqop6m+E=",
     "jsModuleNative": [
       {
         "name": "dotnet.native.69poregybn.js"
@@ -1464,8 +1464,8 @@ var e=!1;const t=async()=>WebAssembly.validate(new Uint8Array([0,97,115,109,1,0,
       },
       {
         "virtualPath": "GestionIncidencias.Bussiness.wasm",
-        "name": "GestionIncidencias.Bussiness.ynp6qfyqav.wasm",
-        "integrity": "sha256-bl13HApwxrIgk2d7l/CEuSAj67LRjLMVUCtR2l7gKQg=",
+        "name": "GestionIncidencias.Bussiness.s0p664pnpk.wasm",
+        "integrity": "sha256-LGpSf1rqKtwBf3c/BWKUXsze5bO8UEAvxRmOcveNbU4=",
         "cache": "force-cache"
       },
       {
@@ -1482,16 +1482,16 @@ var e=!1;const t=async()=>WebAssembly.validate(new Uint8Array([0,97,115,109,1,0,
       },
       {
         "virtualPath": "GestionIncidencias.Web.wasm",
-        "name": "GestionIncidencias.Web.n7381c1zhj.wasm",
-        "integrity": "sha256-Q+N9BGepyZZUAhIoNuV5Yjy0voJggzCy6ScSz/7a5Z8=",
+        "name": "GestionIncidencias.Web.jwemwsf2k0.wasm",
+        "integrity": "sha256-83Rw/Ik/t8tak7UCg9/oQF8BleO1sOWViOexk3tN0XA=",
         "cache": "force-cache"
       }
     ],
     "pdb": [
       {
         "virtualPath": "GestionIncidencias.Bussiness.pdb",
-        "name": "GestionIncidencias.Bussiness.52yj94rz1s.pdb",
-        "integrity": "sha256-Ldw5UvJyMNd9Ql8SRLVmrucZ08fVHsGj9yJqlgHb/XY=",
+        "name": "GestionIncidencias.Bussiness.wy4uq22v1l.pdb",
+        "integrity": "sha256-WAku5KiASvbvCj8xL2hxerJc5yTqYy5USHkxXV2wuZU=",
         "cache": "force-cache"
       },
       {
@@ -1508,8 +1508,8 @@ var e=!1;const t=async()=>WebAssembly.validate(new Uint8Array([0,97,115,109,1,0,
       },
       {
         "virtualPath": "GestionIncidencias.Web.pdb",
-        "name": "GestionIncidencias.Web.wdbu8nhlck.pdb",
-        "integrity": "sha256-JKkek+YoHvlzt5UkVngplGlK2NnLCvBu7wSFi/U4Eiw=",
+        "name": "GestionIncidencias.Web.2m6xcoet8h.pdb",
+        "integrity": "sha256-RlR52pNPgkiYVAV60e56EPUi1i0nQcey6qz9HGQAulI=",
         "cache": "force-cache"
       }
     ],

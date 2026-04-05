@@ -1,5 +1,6 @@
 ﻿@page "/recuperar-password"
 @inject NavigationManager Navigation
+@inject HttpClient Http
 
 <div class="container mt-5">
     <div class="row justify-content-center">
@@ -40,7 +41,7 @@
                         </div>
 
                         <div class="d-grid gap-3 mt-2">
-                            <button class="btn btn-dark btn-lg fw-bold shadow-sm" style="border-radius: 0.5rem;" @onclick="SimularEnvioCorreo">
+                            <button class="btn btn-dark btn-lg fw-bold shadow-sm" style="border-radius: 0.5rem;" @onclick="ProcesarRecuperacion">
                                 Enviar Instrucciones <i class="bi bi-send-fill ms-2"></i>
                             </button>
                             <button class="btn btn-link text-muted text-decoration-none" @onclick="VolverAlLogin">
@@ -57,16 +58,25 @@
 @code {
     private string email = "";
     private bool correoEnviado = false;
-
-    private async Task SimularEnvioCorreo()
+    private string errorMensaje = "";
+    private async Task ProcesarRecuperacion()
     {
+        errorMensaje = "";
         if (!string.IsNullOrWhiteSpace(email))
         {
-            await Task.Delay(1500);
-            correoEnviado = true;
+            var peticion = new { Email = email };
+            var respuesta = await Http.PostAsJsonAsync("api/auth/recuperar", peticion);
+
+            if (respuesta.IsSuccessStatusCode)
+            {
+                correoEnviado = true;
+            }
+            else
+            {
+                errorMensaje = "No se pudo enviar el correo. Verifica la conexión o las credenciales del servidor SMTP.";
+            }
         }
     }
-
     private void VolverAlLogin()
     {
         Navigation.NavigateTo("/login");

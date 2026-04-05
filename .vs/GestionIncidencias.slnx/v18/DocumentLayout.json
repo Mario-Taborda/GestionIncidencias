@@ -3,16 +3,8 @@
   "WorkspaceRootPath": "C:\\Users\\LENOVO\\source\\repos\\GestionIncidencias\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{88C3E7EF-4DD3-7865-F7FD-164F521D511B}|GestionIncidencias.Api\\GestionIncidencias.Api.csproj|c:\\users\\lenovo\\source\\repos\\gestionincidencias\\gestionincidencias.api\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{88C3E7EF-4DD3-7865-F7FD-164F521D511B}|GestionIncidencias.Api\\GestionIncidencias.Api.csproj|solutionrelative:gestionincidencias.api\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{88C3E7EF-4DD3-7865-F7FD-164F521D511B}|GestionIncidencias.Api\\GestionIncidencias.Api.csproj|c:\\users\\lenovo\\source\\repos\\gestionincidencias\\gestionincidencias.api\\controllers\\incidencia.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{88C3E7EF-4DD3-7865-F7FD-164F521D511B}|GestionIncidencias.Api\\GestionIncidencias.Api.csproj|solutionrelative:gestionincidencias.api\\controllers\\incidencia.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{26DBD569-5DC2-95E3-1CAE-1C5CA04DCDF3}|GestionIncidencias.Bussiness\\GestionIncidencias.Bussiness.csproj|c:\\users\\lenovo\\source\\repos\\gestionincidencias\\gestionincidencias.bussiness\\services\\emailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{26DBD569-5DC2-95E3-1CAE-1C5CA04DCDF3}|GestionIncidencias.Bussiness\\GestionIncidencias.Bussiness.csproj|solutionrelative:gestionincidencias.bussiness\\services\\emailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{26DBD569-5DC2-95E3-1CAE-1C5CA04DCDF3}|GestionIncidencias.Bussiness\\GestionIncidencias.Bussiness.csproj|c:\\users\\lenovo\\source\\repos\\gestionincidencias\\gestionincidencias.bussiness\\interfaces\\iusuarioservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{26DBD569-5DC2-95E3-1CAE-1C5CA04DCDF3}|GestionIncidencias.Bussiness\\GestionIncidencias.Bussiness.csproj|solutionrelative:gestionincidencias.bussiness\\interfaces\\iusuarioservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,8 +14,21 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 0,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "IUsuarioService.cs",
+              "DocumentMoniker": "C:\\Users\\LENOVO\\source\\repos\\GestionIncidencias\\GestionIncidencias.Bussiness\\Interfaces\\IUsuarioService.cs",
+              "RelativeDocumentMoniker": "GestionIncidencias.Bussiness\\Interfaces\\IUsuarioService.cs",
+              "ToolTip": "C:\\Users\\LENOVO\\source\\repos\\GestionIncidencias\\GestionIncidencias.Bussiness\\Interfaces\\IUsuarioService.cs",
+              "RelativeToolTip": "GestionIncidencias.Bussiness\\Interfaces\\IUsuarioService.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-05T20:19:33.08Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
@@ -35,45 +40,6 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Incidencia.cs",
-              "DocumentMoniker": "C:\\Users\\LENOVO\\source\\repos\\GestionIncidencias\\GestionIncidencias.Api\\Controllers\\Incidencia.cs",
-              "RelativeDocumentMoniker": "GestionIncidencias.Api\\Controllers\\Incidencia.cs",
-              "ToolTip": "C:\\Users\\LENOVO\\source\\repos\\GestionIncidencias\\GestionIncidencias.Api\\Controllers\\Incidencia.cs",
-              "RelativeToolTip": "GestionIncidencias.Api\\Controllers\\Incidencia.cs",
-              "ViewState": "AgIAAIEAAAAAAAAAAAAgwJgAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-01T03:11:33.615Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "AuthController.cs",
-              "DocumentMoniker": "C:\\Users\\LENOVO\\source\\repos\\GestionIncidencias\\GestionIncidencias.Api\\Controllers\\AuthController.cs",
-              "RelativeDocumentMoniker": "GestionIncidencias.Api\\Controllers\\AuthController.cs",
-              "ToolTip": "C:\\Users\\LENOVO\\source\\repos\\GestionIncidencias\\GestionIncidencias.Api\\Controllers\\AuthController.cs",
-              "RelativeToolTip": "GestionIncidencias.Api\\Controllers\\AuthController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAGIAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-01T03:06:14.125Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "EmailService.cs",
-              "DocumentMoniker": "C:\\Users\\LENOVO\\source\\repos\\GestionIncidencias\\GestionIncidencias.Bussiness\\Services\\EmailService.cs",
-              "RelativeDocumentMoniker": "GestionIncidencias.Bussiness\\Services\\EmailService.cs",
-              "ToolTip": "C:\\Users\\LENOVO\\source\\repos\\GestionIncidencias\\GestionIncidencias.Bussiness\\Services\\EmailService.cs",
-              "RelativeToolTip": "GestionIncidencias.Bussiness\\Services\\EmailService.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAABsAAAADAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-01T02:49:52.702Z",
-              "EditorCaption": ""
             }
           ]
         }

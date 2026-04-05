@@ -1,0 +1,119 @@
+﻿@page "/nueva-clave"
+@inject NavigationManager Navigation
+@inject HttpClient Http
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-5">
+            <div class="card shadow-lg border-0" style="border-radius: 1rem; overflow: hidden;">
+
+                <div class="card-header text-white text-center py-4" style="background: linear-gradient(135deg, #495057 0%, #212529 100%); border-bottom: none;">
+                    <h3 class="mb-0 fw-bold"><i class="bi bi-shield-lock-fill me-2"></i>Nueva Contraseña</h3>
+                </div>
+
+                <div class="card-body p-4 p-md-5 bg-light">
+
+                    @if (cambioExitoso)
+                    {
+                        <div class="alert alert-success d-flex align-items-center shadow-sm" style="border-radius: 0.5rem;" role="alert">
+                            <i class="bi bi-check-circle-fill me-3 fs-4"></i>
+                            <div>
+                                <strong>¡Contraseña actualizada!</strong><br />
+                                Tu clave ha sido cambiada en la base de datos exitosamente.
+                            </div>
+                        </div>
+
+                        <div class="d-grid mt-4">
+                            <button class="btn btn-dark fw-bold shadow-sm" @onclick="IrAlLogin">
+                                Iniciar Sesión Ahora
+                            </button>
+                        </div>
+                    }
+                    else
+                    {
+                        <p class="text-muted text-center mb-4">
+                            Por seguridad, confirma tu correo y crea una nueva contraseña.
+                        </p>
+
+                        @if (!string.IsNullOrEmpty(errorMensaje))
+                        {
+                            <div class="alert alert-danger shadow-sm mb-4" style="border-radius: 0.5rem; font-size: 0.9rem;" role="alert">
+                                <i class="bi bi-exclamation-triangle-fill me-2"></i> @errorMensaje
+                            </div>
+                        }
+
+                        <div class="form-floating mb-3">
+                            <input type="email" @bind="emailConfirmacion" class="form-control shadow-sm" id="emailConf" placeholder="Correo" />
+                            <label for="emailConf" class="text-muted"><i class="bi bi-envelope-fill me-2"></i>Correo Electrónico</label>
+                        </div>
+
+                        <div class="form-floating mb-3">
+                            <input type="password" @bind="nuevaPassword" class="form-control shadow-sm" id="nuevaClave" placeholder="Nueva Contraseña" />
+                            <label for="nuevaClave" class="text-muted"><i class="bi bi-lock me-2"></i>Nueva Contraseña</label>
+                        </div>
+
+                        <div class="form-floating mb-4">
+                            <input type="password" @bind="confirmarPassword" class="form-control shadow-sm" id="confirmarClave" placeholder="Confirmar Contraseña" />
+                            <label for="confirmarClave" class="text-muted"><i class="bi bi-lock-fill me-2"></i>Confirmar Contraseña</label>
+                        </div>
+
+                        <div class="d-grid gap-3 mt-2">
+                            <button class="btn btn-danger btn-lg fw-bold shadow-sm" style="border-radius: 0.5rem;" @onclick="GuardarNuevaClaveReal">
+                                Guardar Contraseña <i class="bi bi-save2 ms-2"></i>
+                            </button>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    private string emailConfirmacion = "";
+    private string nuevaPassword = "";
+    private string confirmarPassword = "";
+    private string errorMensaje = "";
+    private bool cambioExitoso = false;
+
+    private async Task GuardarNuevaClaveReal()
+    {
+        errorMensaje = "";
+        if (string.IsNullOrWhiteSpace(emailConfirmacion) || string.IsNullOrWhiteSpace(nuevaPassword) || string.IsNullOrWhiteSpace(confirmarPassword))
+        {
+            errorMensaje = "Por favor, llena todos los campos.";
+            return;
+        }
+
+        if (nuevaPassword != confirmarPassword)
+        {
+            errorMensaje = "Las contraseñas no coinciden.";
+            return;
+        }
+
+        if (nuevaPassword.Length < 6)
+        {
+            errorMensaje = "La contraseña debe tener al menos 6 caracteres.";
+            return;
+        }
+        var peticion = new
+        {
+            Email = emailConfirmacion,
+            NuevaPassword = nuevaPassword
+        };
+        var respuesta = await Http.PutAsJsonAsync("api/auth/restablecer-clave", peticion);
+
+        if (respuesta.IsSuccessStatusCode)
+        {
+            cambioExitoso = true;
+        }
+        else
+        {
+            errorMensaje = "Hubo un error. Verifica que el correo ingresado sea el correcto.";
+        }
+    }
+    private void IrAlLogin()
+    {
+        Navigation.NavigateTo("/login");
+    }
+}

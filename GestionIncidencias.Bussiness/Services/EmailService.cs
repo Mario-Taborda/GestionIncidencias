@@ -9,8 +9,8 @@ namespace GestionIncidencias.Bussiness.Services
 {
     public class EmailService : IEmailService
     {
-        private readonly string _correoRemitente = "MarioTaborda1995@gmail.com";
-        private readonly string _contrasenaApp = "TU_CONTRASEÑA_DE_APLICACIÓN_AQUI";
+        private readonly string _correoRemitente = "mariotaborda1995@gmail.com";
+        private readonly string _contrasenaApp = "hjjqizdonxaxqvbp";
         private readonly string _servidorSmtp = "smtp.gmail.com";
         private readonly int _puertoSmtp = 587;
         public async Task EnviarCorreoAsync(string destinatario, string asunto, string mensajeHtml)

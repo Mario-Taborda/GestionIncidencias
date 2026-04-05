@@ -6,7 +6,8 @@ using GestionIncidencias.Domain.Entities;
 using GestionIncidencias.Infraestructure.Repositories;
 using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace GestionIncidencias.Bussiness.Services
 {
@@ -14,6 +15,21 @@ namespace GestionIncidencias.Bussiness.Services
     {
         private readonly UsuarioRepository _usuarioRepository = usuarioRepository;
         private readonly IMapper _mapper = mapper;
+
+        public async Task<bool> ActualizarPasswordAsync(string email, string nuevaPasswordHash)
+        {
+            var todosLosUsuarios = await _usuarioRepository.GetAllAsync();
+            var usuario = todosLosUsuarios.FirstOrDefault(u => u.Email == email);
+
+            if (usuario == null) return false;
+
+            usuario.PasswordHash = nuevaPasswordHash;
+
+            await _usuarioRepository.UpdateAsync(usuario);
+
+            return true;
+        }
+
         public async Task<UsuarioResponsesDto> CreateUsuarioAsync(UsuarioDto usuarioDto)
         {
             var usuario = _mapper.Map<Usuario>(usuarioDto);
@@ -38,6 +54,7 @@ namespace GestionIncidencias.Bussiness.Services
             var usuario = _mapper.Map<Usuario>(updateusuarioDto);
             await _usuarioRepository.UpdateAsync(usuario);
         }
+
         public async Task<bool> ValidarCredencialesAsync(string email, string password)
         {
             var todosLosUsuarios = await _usuarioRepository.GetAllAsync();

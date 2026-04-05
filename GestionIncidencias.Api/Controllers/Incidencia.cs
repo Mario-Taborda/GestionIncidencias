@@ -99,15 +99,12 @@ namespace GestionIncidencias.Api.Controllers
                     new { Message = "Error al actualizar la incidencia", Detalle = ex.Message });
             }
         }
-    
-
     [HttpGet("exportar")]
         [AllowAnonymous]
         public async Task<IActionResult> ExportarExcel()
         {
             try
             {
-       
                 var incidencias = await _incidenciaService.GetAllIncidenciaAsync();
                 using var workbook = new XLWorkbook();
                 var worksheet = workbook.Worksheets.Add("Historial Incidencias");
